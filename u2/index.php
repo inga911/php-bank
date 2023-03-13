@@ -1,9 +1,5 @@
 <?php
 
-$vardas = ['Ona', 'Birute', 'Juste', 'Lina'];
-$pavarde = ['Onute', 'Birutiene', 'Justiniene', 'Liniene'];
-
-
 // function getUnique($to)
 // {
 //     static $ids = [];
