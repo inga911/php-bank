@@ -1,19 +1,16 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id_number'])) {
     http_response_code(400);
     die;
 }
 
-$id = (int) $_GET['id'];
+$id = $_GET['id_number'];
 
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-$clients = array_filter($clients, fn($client) => $client['user_id'] != $id);
+$clients = array_filter($clients, fn($client) => $client['id_number'] != $id);
 
-$clients = serialize($clients);
-file_put_contents(__DIR__ . '/clients.ser', $clients);
+file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
 header('Location: http://localhost/php-bank/u2/main.php');
-
-?>
