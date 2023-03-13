@@ -25,12 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 $id = $_GET['id_number'];
-// $foundClient = null;
 $find = false;
 foreach($clients as $client) {
     if ($client['id_number'] == $id) {
         $find = true;
-        // $foundClient = $client;
         break;
     }
 }
