@@ -3,7 +3,9 @@ $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 $page = (int) ($_GET['page'] ?? 1);
 
+
 $sort = $_GET['sort'] ?? '';
+
 
 if ($sort == 'surname_asc') {
     usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
@@ -11,8 +13,9 @@ if ($sort == 'surname_asc') {
 elseif ($sort == 'surname_desc') {
     usort($clients, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
-
 $clients = array_slice($clients, ($page - 1) * 10, 10);
+
+
 
 
 ?>
@@ -24,15 +27,16 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANKAS U2</title>
+    <title>main</title>
 </head>
 
 <body>
-<?php require __DIR__ . '/menu.php' ?> 
+    <?php require __DIR__ . '/menu.php' ?> 
+<!-- <a href="http://localhost/php-bank/u2/create.php">Sukurti naują sąskaitą</a> -->
     
 <br><br>
-    <form action="" method="get"></form>
-    <form action="http://localhost/php-bank/u2/main.php?sort=surname_asc" method="get">
+    <form action="" method="get">
+    <form action="http://localhost/php-bank/u2/users.php?sort=surname_asc" method="get">
         <fieldset>
             <legend>RŪŠIUOTI:</legend>
             <select name="sort">
@@ -41,10 +45,12 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
             </select>
             <button type="submit">Rūšiuoti</button>
         </fieldset>
+      
     </form>
 
     <ul>
-        <?php foreach($clients as $client) : ?>
+        
+    <?php foreach($clients as $client) : ?>
             <li><b>Pavarde: </b> <?= $client['surname'] ?> </li>
             <li><b>Vardas: </b> <?= $client['name'] ?> </li>
             <li><b>Amens kodas: </b><?= $client['id_number'] ?> </li>
@@ -55,11 +61,9 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
             </form>
             <form action="" method="post"> 
                 <button type="submit">Prideti lesu</button>
-            </form>
-            <form action="" method="post"> 
-                <button type="submit">Nuskaiciuoti lesu</button>
-            </form>
+            </form>  
         <?php endforeach ?>
+        
     </ul>
 
 </body>

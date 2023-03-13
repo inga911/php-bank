@@ -1,6 +1,7 @@
 <!-- <?php  
-    // $clients = unserialize(file_get_contents(__DIR__ . '/clients.new'));
-    // $all = ceil(count($clients) / 10);
+session_start();
+    $clients = unserialize(file_get_contents(__DIR__ . '/clients.new'));
+   //  $all = ceil(count($clients) / 10);
 // ?>
 
 <?php foreach (range(1, $all) as $page) : ?>  -->
@@ -24,4 +25,10 @@
 
    <a href="http://localhost/php-bank/u2/create.php">Sukurti naują sąskaitą</a>
 
-   <a href="http://localhost/php-bank/u2/main.php">HOME</a>
+   <a href="http://localhost/php-bank/u2/users.php">HOME</a>
+
+   <?php
+
+
+?>
+   <h3 style="color:crimson;">blogai</h3>

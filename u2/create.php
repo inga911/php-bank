@@ -1,34 +1,46 @@
 <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-var_dump($_POST);
+    $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
+    $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
+    file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
-   
-// $id = getUnique(100);
+    
+    if (empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['acc_number']) || empty($_POST['id_number'])) {
+        die('Užpildykite visus laukus!');
+    }
+
+    foreach ($clients as $client) {
+        if ($client['acc_number'] == $_POST['acc_number']) {
+            die('Sąskaita su tokiu numeriu jau egzistuoja!');
+        }
+        if ($client['id_number'] == $_POST['id_number']) {
+            die('Klientas su tokiu asmens kodu jau egzistuoja!');
+        }
+    }
+    
     $client = [
         'surname' => $_POST['surname'],
         'name' => $_POST['name'],
         'acc_number' =>  $_POST['acc_number'],
         'id_number' => $_POST['id_number'],
-        'funds' => '0'
+        'funds' => 0
     ];
 
-// usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
-
-    $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
-
     $clients[] = $client;
+    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
+    usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
 
-    $clients = serialize($clients);
-    file_put_contents(__DIR__ . '/clients.ser', $clients);
+    // $clients = serialize($clients);
 
-    header('Location: http://localhost/php-bank/u2/main.php');
-    die;
-}
-$id = json_decode(file_get_contents(__DIR__ . '/id.json'));
     $id++;
     file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
+
+
+    header('Location: http://localhost/php-bank/u2/users.php');
+    die;
+}
 
 
 ?>
@@ -44,20 +56,22 @@ $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
 </head>
 
 <body>
-<a href="http://localhost/php-bank/u2/main.php">HOME</a>
+    <a href="http://localhost/php-bank/u2/users.php">HOME</a>
     <form action="" method="post">
         <fieldset>
             <legend>Sukurti sąskaitą: </legend>
             <label for="name">Vardas: </label>
             <input type="text" name="name">
+            <br><br>
             <label for="surname">Pavardė: </label>
             <input type="text" name="surname">
+            <br><br>
             <label for="acc_number">Sąskaitos numeris: </label>
-            <input type="text" name="acc_number" >
+            <input type="text" name="acc_number">
+            <br><br>
             <label for="id_number">Asmens kodas: </label>
             <input type="text" name="id_number">
-            <label for="funds">Lesos: </label>
-            <input type="number" name="funds">
+            <br><br>
             <button type="submit">SUKURTI</button>
         </fieldset>
 
