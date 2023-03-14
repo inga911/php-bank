@@ -1,19 +1,5 @@
 <?php
 
-
-
-// function getUnique($to)
-// {
-//     static $ids = [];
-//     do {
-//         $id = rand(1, $to);
-//     } while(in_array($id, $ids));
-//     $ids[] = $id;
-//     return $id;
-// }
-
-
-
 function personalId(){
     static $ids = [];
     $id_number = '';
@@ -105,5 +91,3 @@ $clients = array_map(function($client) {
 file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 echo '<pre>';
 print_r($clients);
-
-?>
