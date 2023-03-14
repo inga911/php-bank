@@ -13,13 +13,6 @@ elseif ($sort == 'surname_desc') {
 }
 
 
-// if (is_array($clients)) {
-//     $clients = array_slice($clients, ($page - 1) * 10, 10);
-// } else {
-//     $clients = [];
-// }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +48,7 @@ elseif ($sort == 'surname_desc') {
             <li><b>Vardas: </b> <?= $client['name'] ?> </li>
             <li><b>Amens kodas: </b><?= $client['id_number'] ?> </li>
             <li><b>Banko saskaitos numeris: </b> <?= $client['acc_number'] ?></li>
-            <li><b>Lesos: </b> <?= $client['funds'] ?></li>
+            <li><b>Balansas: </b> <?= $client['funds'] ?></li>
              <a href="http://localhost/php-bank/u2/edit.php?id_number=<?= $client['id_number'] ?>">Pridėti lėšų</a>
             <form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post"> 
                 <button type="submit">Istrinti</button>

@@ -1,14 +1,11 @@
 <?php
+session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
-    $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
-    file_put_contents(__DIR__ . '/id.json', json_encode($id));
+    // $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
+    // file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
-    
-    if (empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['acc_number']) || empty($_POST['id_number'])) {
-        die('Užpildykite visus laukus!');
-    }
 
     foreach ($clients as $client) {
         if ($client['acc_number'] == $_POST['acc_number']) {
@@ -29,18 +26,19 @@
     ];
 
     $clients[] = $client;
-    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
     usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
+    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
-    // $clients = serialize($clients);
+    $clients = serialize($clients);
 
-    $id++;
-    file_put_contents(__DIR__ . '/id.json', json_encode($id));
+    // $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
+    // $id++;
+    // file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
 
 
     header('Location: http://localhost/php-bank/u2/users.php');
-    die;
+   die;
 }
 
 
@@ -68,11 +66,14 @@
             <input type="text" name="surname">
             <br><br>
             <label for="acc_number">Sąskaitos numeris: </label>
-            <input type="text" name="acc_number">
+            <input type="text" name="acc_number" value="LT60 10100 "><br>
+            <span class="info" style="color:silver; font-size: 13px">Pvz.: LT60 10100 xxxxxxxxxxx (20 simboliu)</span>
             <br><br>
             <label for="id_number">Asmens kodas: </label>
-            <input type="text" name="id_number">
+            <input type="text" name="id_number"><br>
+            <span class="info" style="color:silver; font-size: 13px">3-6, 00-99, 01-12, 01-31, xx, xx (11 simboliu)</span>
             <br><br>
+            <label for="surname">Pradines lesos:  0</label><br>
             <button type="submit">SUKURTI</button>
         </fieldset>
 

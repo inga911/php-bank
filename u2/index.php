@@ -4,13 +4,13 @@ function personalId(){
     static $ids = [];
     $id_number = '';
     do {
-    $birth_century = rand(1,6);
+    $birth_century = rand(3,6);
     $birth_year = rand(0,99);
     $birth_month = rand(1, 12);
     $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $birth_month, date("Y"));
     $birth_day = rand(1, $daysInMonth);
     $sequence_numb = rand(0, 99);
-    $control_numb = rand(0, 9);
+    $control_numb = rand(0, 99);
 
     $today = new DateTime(date('Y-m-d'));
     $birth_year_full = ($birth_century - 1) * 100 + $birth_year;
@@ -34,8 +34,8 @@ function personalId(){
 
     $ids[] = $id_number;
 
-    return $id_number;
-    // return implode('', $ids);
+    // return $id_number;
+    return implode('', $ids);
 }
 
 
@@ -62,7 +62,7 @@ function accNumber(){
 }
 
 function funds() {
-    $balance = rand(0, 0);
+    $balance = rand(0, 1000);
     return $balance;
 }
 

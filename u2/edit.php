@@ -1,15 +1,13 @@
 <?php
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_GET['id_number'];
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 
-  
-
     foreach ($clients as &$client) {
         if ($client['id_number'] == $id) {
-            $client['funds'] = (int)$_POST['funds'];
+            $fundsToAdd = $_POST['funds'];
+            $client['funds'] += $fundsToAdd;
 
             $clients = serialize($clients);
             file_put_contents(__DIR__ . '/clients.ser', $clients);
@@ -17,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         }
     }
+    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
+
     header('Location: http://localhost/php-bank/u2/users.php');
     die;
 }
-
-
 
 
 //GET
@@ -40,8 +38,6 @@ foreach ($clients as $client) {
 if (!$find) {
     die('client not found');
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -57,17 +53,19 @@ if (!$find) {
 <body>
     <a href="http://localhost/php-bank/u2/users.php">HOME</a>
 
-    <form action="http://localhost/php-bank/u2/users.php?id=<?= $client['id_number'] ?>" method="post">
+    <form action="http://localhost/php-bank/u2/users.php?id_number=<?= $client['id_number'] ?>" method="post">
         <fieldset>
             <legend>Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <b>Balansas: </b>
-            <input type="number" name="funds" value="<?= $client['funds'] ?>">
+            <label for="funds"><b>Balansas: </b></label>
+            <input type="text" name="funds">
             <button type="submit">Issaugoti</button>
         </fieldset>
     </form>
-
+    <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') : ?>
+        <p>Naujas kliento balansas: <?= $client['funds'] ?></p>
+    <?php endif ?>
 
 </body>
 
