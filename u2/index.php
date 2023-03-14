@@ -34,8 +34,7 @@ function personalId(){
 
     $ids[] = $id_number;
 
-    // return $id_number;
-    return implode('', $ids);
+    return $id_number;
 }
 
 
