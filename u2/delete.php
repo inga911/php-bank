@@ -1,12 +1,10 @@
 <?php
-
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id_number'])) {
     http_response_code(400);
     die;
 }
 
-$id =  $_GET['id_number'];
+$id =  (int)$_GET['id_number'];
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 foreach ($clients as $client) {
@@ -21,8 +19,7 @@ foreach ($clients as $client) {
 }
 $clients = array_filter($clients, fn($client) => $client['id_number'] != $id);
 
-// $clients = serialize($clients);
-file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
+$clients = file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
 header("Location: http://localhost/php-bank/u2/users.php");
 

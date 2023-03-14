@@ -5,17 +5,19 @@ $page = (int) ($_GET['page'] ?? 1);
 
 
 $sort = $_GET['sort'] ?? '';
-
-
 if ($sort == 'surname_asc') {
     usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 }
 elseif ($sort == 'surname_desc') {
     usort($clients, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
-$clients = array_slice($clients, ($page - 1) * 10, 10);
 
 
+// if (is_array($clients)) {
+//     $clients = array_slice($clients, ($page - 1) * 10, 10);
+// } else {
+//     $clients = [];
+// }
 
 
 ?>
@@ -27,7 +29,7 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
+    <title>Users</title>
 </head>
 
 <body>
@@ -35,7 +37,6 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
 <!-- <a href="http://localhost/php-bank/u2/create.php">Sukurti naują sąskaitą</a> -->
     
 <br><br>
-    <form action="" method="get">
     <form action="http://localhost/php-bank/u2/users.php?sort=surname_asc" method="get">
         <fieldset>
             <legend>RŪŠIUOTI:</legend>
@@ -45,25 +46,22 @@ $clients = array_slice($clients, ($page - 1) * 10, 10);
             </select>
             <button type="submit">Rūšiuoti</button>
         </fieldset>
-      
     </form>
 
     <ul>
-        
+    <?php if (is_array($clients)): ?>
     <?php foreach($clients as $client) : ?>
-            <li><b>Pavarde: </b> <?= $client['surname'] ?> </li>
+        <li><b>Pavarde: </b> <?= $client['surname'] ?> </li>
             <li><b>Vardas: </b> <?= $client['name'] ?> </li>
             <li><b>Amens kodas: </b><?= $client['id_number'] ?> </li>
             <li><b>Banko saskaitos numeris: </b> <?= $client['acc_number'] ?></li>
             <li><b>Lesos: </b> <?= $client['funds'] ?></li>
-             <form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post"> 
+             <a href="http://localhost/php-bank/u2/edit.php?id_number=<?= $client['id_number'] ?>">Pridėti lėšų</a>
+            <form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post"> 
                 <button type="submit">Istrinti</button>
             </form>
-            <form action="" method="post"> 
-                <button type="submit">Prideti lesu</button>
-            </form>  
         <?php endforeach ?>
-        
+        <?php endif; ?>
     </ul>
 
 </body>

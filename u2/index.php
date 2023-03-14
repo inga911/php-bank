@@ -1,7 +1,5 @@
 <?php
 
-$vardas = ['Ona', 'Birute', 'Juste', 'Lina'];
-$pavarde = ['Onute', 'Birutiene', 'Justiniene', 'Liniene'];
 
 
 // function getUnique($to)
@@ -78,7 +76,7 @@ function accNumber(){
 }
 
 function funds() {
-    $balance = rand(0, 1000);
+    $balance = rand(0, 0);
     return $balance;
 }
 
@@ -87,18 +85,19 @@ function funds() {
 $clients = array_map(fn($_) =>  [
     'id_number' => personalId(),
     'acc_number' => accNumber(),
-    'name' => randString(),
+    // 'name' => randString(),
     'surname' => randString(),
-    'funds' => funds()
+    // 'funds' => funds()
 ], range(1, 8));
 
 usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 
+
 $clients = array_map(function($client) {
-    $client['id_number'] = personalId();
-    $client['acc_number'] = accNumber();
+    // $client['id_number'] = personalId();
+    // $client['acc_number'] = accNumber();
     $client['name'] = randString();
-    $client['surname'] = randString();
+    // $client['surname'] = randString();
     $client['funds'] = funds();
     return $client;
 }, $clients);

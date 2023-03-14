@@ -12,12 +12,13 @@
 
     foreach ($clients as $client) {
         if ($client['acc_number'] == $_POST['acc_number']) {
-            die('Sąskaita su tokiu numeriu jau egzistuoja!');
+            die('Jūsų įvesta banko sąskaita jau egzistuoja');
         }
         if ($client['id_number'] == $_POST['id_number']) {
-            die('Klientas su tokiu asmens kodu jau egzistuoja!');
+            die('Toks asmens kodas jau egzistuoja');
         }
     }
+    
     
     $client = [
         'surname' => $_POST['surname'],
