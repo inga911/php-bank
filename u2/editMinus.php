@@ -6,19 +6,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     foreach ($clients as &$client) {
         if ($client['id_number'] == $id) {
-            $fundsToAdd = $_POST['funds'];
-            $client['funds'] += $fundsToAdd;
-
-            $clients = serialize($clients);
-            file_put_contents(__DIR__ . '/clients.ser', $clients);
+             $fundsMinus = $_POST['funds'];
+             $client['funds'] = $client['funds']  - $fundsMinus;
+            // $clients = serialize($clients);
+            // file_put_contents(__DIR__ . '/clients.ser', $clients);
+            file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
             break;
         }
     }
-    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
     header('Location: http://localhost/php-bank/u2/users.php');
-    die;
+    // die;
 }
 
 
@@ -53,19 +52,18 @@ if (!$find) {
 <body>
     <a href="http://localhost/php-bank/u2/users.php">HOME</a>
 
-    <form action="http://localhost/php-bank/u2/users.php?id_number=<?= $client['id_number'] ?>" method="post">
+    <form action="http://localhost/php-bank/u2/editMinus.php?id_number=<?= $client['id_number'] ?>" method="post">
         <fieldset>
             <legend>Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <label for="funds"><b>Balansas: </b></label>
-            <input type="text" name="funds">
+            <label for="funds"><b>Prideti prie saskaitos: </b></label>
+            <input type="text" name="funds" ><br>
+            <span class="info" style="color:grey; font-size: 13px">Likutis saskaitoje: <?= $client['funds'] ?></span> <br>
+
             <button type="submit">Issaugoti</button>
         </fieldset>
     </form>
-    <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') : ?>
-        <p>Naujas kliento balansas: <?= $client['funds'] ?></p>
-    <?php endif ?>
 
 </body>
 

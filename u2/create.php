@@ -7,14 +7,14 @@ session_start();
     // file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
 
-    foreach ($clients as $client) {
-        if ($client['acc_number'] == $_POST['acc_number']) {
-            die('Jūsų įvesta banko sąskaita jau egzistuoja');
-        }
-        if ($client['id_number'] == $_POST['id_number']) {
-            die('Toks asmens kodas jau egzistuoja');
-        }
-    }
+    // foreach ($clients as $client) {
+    //     if ($client['acc_number'] == $_POST['acc_number']) {
+    //         die('Jūsų įvesta banko sąskaita jau egzistuoja');
+    //     }
+    //     if ($client['id_number'] == $_POST['id_number']) {
+    //         die('Toks asmens kodas jau egzistuoja');
+    //     }
+    // }
     
     
     $client = [
@@ -26,7 +26,7 @@ session_start();
     ];
 
     $clients[] = $client;
-    usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
+    // usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
     file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
     $clients = serialize($clients);
@@ -71,9 +71,9 @@ session_start();
             <br><br>
             <label for="id_number">Asmens kodas: </label>
             <input type="text" name="id_number"><br>
-            <span class="info" style="color:silver; font-size: 13px">3-6, 00-99, 01-12, 01-31, xx, xx (11 simboliu)</span>
+            <span class="info" style="color:silver; font-size: 13px">3-6/ 00-99/ 01-12/ 01-31/ xx/ xx (11 simboliu)</span>
             <br><br>
-            <label for="surname">Pradines lesos:  0</label><br>
+            <label for="surname">Pradines lesos:  0</label><br><br>
             <button type="submit">SUKURTI</button>
         </fieldset>
 

@@ -90,3 +90,5 @@ $clients = array_map(function($client) {
 file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 echo '<pre>';
 print_r($clients);
+
+?>

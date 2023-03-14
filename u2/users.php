@@ -1,4 +1,5 @@
 <?php
+
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 $page = (int) ($_GET['page'] ?? 1);
@@ -41,21 +42,21 @@ elseif ($sort == 'surname_desc') {
         </fieldset>
     </form>
 
+    
     <ul>
-    <?php if (is_array($clients)): ?>
-    <?php foreach($clients as $client) : ?>
-        <li><b>Pavarde: </b> <?= $client['surname'] ?> </li>
-            <li><b>Vardas: </b> <?= $client['name'] ?> </li>
-            <li><b>Amens kodas: </b><?= $client['id_number'] ?> </li>
-            <li><b>Banko saskaitos numeris: </b> <?= $client['acc_number'] ?></li>
-            <li><b>Balansas: </b> <?= $client['funds'] ?></li>
-             <a href="http://localhost/php-bank/u2/edit.php?id_number=<?= $client['id_number'] ?>">Pridėti lėšų</a>
-            <form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post"> 
-                <button type="submit">Istrinti</button>
-            </form>
-        <?php endforeach ?>
-        <?php endif; ?>
-    </ul>
+<?php if (is_array($clients)): ?>
+<?php foreach($clients as $client) : ?>
+    <li><b>Pavarde: </b> <?= $client['surname'] ?> </li>
+    <li><b>Vardas: </b> <?= $client['name'] ?> </li>
+    <li><b>Amens kodas: </b><?= $client['id_number'] ?> </li>
+    <li><b>Banko saskaitos numeris: </b> <?= $client['acc_number'] ?></li>
+    <li><b>Balansas: </b> <?= $client['funds'] ?></li>
+    <li><a href="http://localhost/php-bank/u2/editPlus.php?id_number=<?= $client['id_number'] ?>">Pridėti lėšų</a></li>
+    <li><a href="http://localhost/php-bank/u2/editMinus.php?id_number=<?= $client['id_number'] ?>">Nuskaiciuoti lesas</a></li>
+    <li><form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post"><button type="submit">Istrinti</button></form></li>
+<?php endforeach ?>
+<?php endif; ?>
+</ul>
 
 </body>
 
