@@ -47,7 +47,8 @@ function randString()
     foreach(range(1, rand(3, 10)) as $_) {
         $out .= $letters[rand(0, count($letters) - 1 )];
     }
-    return $out;
+    
+    return ucfirst($out);
 }
 
 
@@ -75,7 +76,6 @@ $clients = array_map(fn($_) =>  [
     // 'funds' => funds()
 ], range(1, 8));
 
-usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 
 
 $clients = array_map(function($client) {
@@ -87,6 +87,7 @@ $clients = array_map(function($client) {
     return $client;
 }, $clients);
 
+usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 echo '<pre>';
 print_r($clients);

@@ -3,13 +3,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_GET['id_number'];
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-
     foreach ($clients as &$client) {
         if ($client['id_number'] == $id) {
-             $fundsMinus = $_POST['funds'];
-             $client['funds'] = $client['funds']  - $fundsMinus;
-            // $clients = serialize($clients);
-            // file_put_contents(__DIR__ . '/clients.ser', $clients);
+            $fundsMinus = $_POST['funds'];
+            if ($fundsMinus > $client['funds']) {
+                die('Nepakankamai lėšų nuskaičiuoti šiai sumai.');
+            }
+            $client['funds'] = $client['funds'] - $fundsMinus;
             file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 
             break;
@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     header('Location: http://localhost/php-bank/u2/users.php');
-    // die;
 }
 
 
@@ -57,11 +56,11 @@ if (!$find) {
             <legend>Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <label for="funds"><b>Prideti prie saskaitos: </b></label>
+            <label for="funds"><b>Nuskaičiuoti nuo sąskaitos: </b></label>
             <input type="text" name="funds" ><br>
-            <span class="info" style="color:grey; font-size: 13px">Likutis saskaitoje: <?= $client['funds'] ?></span> <br>
+            <span class="info" style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?></span> <br>
 
-            <button type="submit">Issaugoti</button>
+            <button type="submit">Išsaugoti</button>
         </fieldset>
     </form>
 

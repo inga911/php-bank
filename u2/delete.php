@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id_number'])) {
 $id =  (int)$_GET['id_number'];
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-foreach ($clients as $key => $client) {
+foreach ($clients as $client) {
     if ($client['id_number'] == $id) {
         if ($client['funds'] > 0) {
-            http_response_code(400);
+            // http_response_code(400);
             echo 'Negalima ištrinti jei sąskaitoje yra daugiau nei 0';
             die;
         }

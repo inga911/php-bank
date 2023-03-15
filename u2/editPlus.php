@@ -57,9 +57,9 @@ if (!$find) {
             <legend>Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <label for="funds"><b>Prideti prie saskaitos: </b></label>
+            <label for="funds"><b>Įnešti į sąskaitą: </b></label>
             <input type="text" name="funds" ><br>
-            <span class="info" style="color:grey; font-size: 13px">Likutis saskaitoje: <?= $client['funds'] ?></span> <br>
+            <span class="info" style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?> Eur.</span> <br>
 
             <button type="submit">Issaugoti</button>
         </fieldset>
