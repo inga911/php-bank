@@ -1,14 +1,14 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id_number'])) {
+if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id'])) {
     http_response_code(400);
     die;
 }
 
-$id =  (int)$_GET['id_number'];
+$id =  (int)$_GET['id'];
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 foreach ($clients as $client) {
-    if ($client['id_number'] == $id) {
+    if ($client['id'] == $id) {
         if ($client['funds'] > 0) {
             // http_response_code(400);
             echo 'Negalima ištrinti jei sąskaitoje yra daugiau nei 0';
@@ -17,7 +17,7 @@ foreach ($clients as $client) {
         break;
     }
 }
-$clients = array_filter($clients, fn($client) => $client['id_number'] != $id);
+$clients = array_filter($clients, fn($client) => $client['id'] != $id);
 
 $clients = file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 

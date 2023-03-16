@@ -51,6 +51,7 @@ elseif ($sort == 'surname_desc') {
       <th>Asmens kodas</th>
       <th>Banko sąskaitos numeris</th>
       <th>Likutis</th>
+      <!-- <th style="background-color: red;">ID</th> -->
       <th>Veiksmai</th>
     </tr>
   </thead>
@@ -63,11 +64,12 @@ elseif ($sort == 'surname_desc') {
           <td  class="one"><?= $client['id_number'] ?></td>
           <td class="two"><?= $client['acc_number'] ?></td>
           <td class="one"><?= $client['funds']?></td>
+          <!-- <td class="one"><?= $client['id']?></td> -->
           <td class="two">
             <div class="veiksmai">
-                <a class="a-plus btn" href="http://localhost/php-bank/u2/editPlus.php?id_number=<?= $client['id_number'] ?>">Pridėti lėšų</a>
-                <a class="a-minus btn" href="http://localhost/php-bank/u2/editMinus.php?id_number=<?= $client['id_number'] ?>">Nuskaičiuoti lėšas</a>
-                <form action="http://localhost/php-bank/u2/delete.php?id_number=<?= $client['id_number'] ?>" method="post">
+                <a class="a-plus btn" href="http://localhost/php-bank/u2/editPlus.php?id=<?= $client['id'] ?>">Pridėti lėšų</a>
+                <a class="a-minus btn" href="http://localhost/php-bank/u2/editMinus.php?id=<?= $client['id'] ?>">Nuskaičiuoti lėšas</a>
+                <form action="http://localhost/php-bank/u2/delete.php?id=<?= $client['id'] ?>" method="post">
                     <button class="btn-f btn" type="submit">Ištrinti</button>
                 </form>
             </div>

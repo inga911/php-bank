@@ -1,5 +1,15 @@
 <?php
 
+function getUnique($to)
+{
+    static $ids = [];
+    do {
+        $id = rand(1, $to);
+    } while(in_array($id, $ids));
+    $ids[] = $id;
+    return $id;
+}
+
 function personalId(){
     static $ids = [];
     $id_number = '';
@@ -69,6 +79,7 @@ function funds() {
 
 
 $clients = array_map(fn($_) =>  [
+    'id' => getUnique(100),
     'id_number' => personalId(),
     'acc_number' => accNumber(),
     // 'name' => randString(),

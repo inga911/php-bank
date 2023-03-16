@@ -1,6 +1,7 @@
 <?php
 session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        require __DIR__ . '/index.php';
 
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
     // $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
@@ -22,7 +23,8 @@ session_start();
         'name' => $_POST['name'],
         'acc_number' =>  $_POST['acc_number'],
         'id_number' => $_POST['id_number'],
-        'funds' => 0
+        'funds' => 0,
+        'id' => getUnique(1000)
     ];
 
     $clients[] = $client;
@@ -67,7 +69,7 @@ session_start();
             <input type="text" name="surname">
             <br><br>
             <label for="acc_number">Sąskaitos numeris: </label>
-            <input type="text" name="acc_number" value="LT60 10100 "><br>
+            <input type="text" name="acc_number" value="LT6010100"><br>
             <span class="info" style="color:silver; font-size: 13px">Pvz.: LT6010100xxxxxxxxxxx (20 simboliu)</span>
             <br><br>
             <label for="id_number">Asmens kodas: </label>

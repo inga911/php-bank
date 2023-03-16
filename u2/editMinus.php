@@ -1,10 +1,11 @@
 <?php
+    // require __DIR__ . '/index.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_GET['id_number'];
+    $id = $_GET['id'];
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
     foreach ($clients as &$client) {
-        if ($client['id_number'] == $id) {
+        if ($client['id'] == $id) {
             $fundsMinus = $_POST['funds'];
             if ($fundsMinus > $client['funds']) {
                 die('Nepakankamai lėšų nuskaičiuoti šiai sumai.');
@@ -24,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-$id = $_GET['id_number'];
+$id = $_GET['id'];
 $find = false;
 foreach ($clients as $client) {
-    if ($client['id_number'] == $id) {
+    if ($client['id'] == $id) {
         $find = true;
         break;
     }
@@ -51,7 +52,7 @@ if (!$find) {
 <body>
     <a href="http://localhost/php-bank/u2/users.php">HOME</a>
 
-    <form action="http://localhost/php-bank/u2/editMinus.php?id_number=<?= $client['id_number'] ?>" method="post">
+    <form action="http://localhost/php-bank/u2/editMinus.php?id=<?= $client['id'] ?>" method="post">
         <fieldset>
             <legend>Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
