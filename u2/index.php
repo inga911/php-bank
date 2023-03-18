@@ -1,3 +1,4 @@
+
 <?php
 
 function getUnique($to)
@@ -47,18 +48,24 @@ function personalId(){
     return $id_number;
 }
 
+function getRandName($namesArray) {
+    $randomIndex = array_rand($namesArray);
+    return $namesArray[$randomIndex];
+}
+function getName() {
+    $names = array('Alice', 'Bob', 'Charlie', 'David', 'Emma', 'Frank', 'Grace', 'Henry');
+    $randomName = getRandName($names);
+    return $randomName;
+}
 
-
-
-function randString()
-{
-    $letters = range('a', 'z');
-    $out = '';
-    foreach(range(1, rand(3, 10)) as $_) {
-        $out .= $letters[rand(0, count($letters) - 1 )];
-    }
-    
-    return ucfirst($out);
+function getRandLastName($lastNamesArray) {
+    $randomIndex2 = array_rand($lastNamesArray);
+    return $lastNamesArray[$randomIndex2];
+}
+function getLastName() {
+    $lastNames = array("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor");
+    $randomName = getRandLastName($lastNames);
+    return $randomName;
 }
 
 
@@ -72,7 +79,7 @@ function accNumber(){
 }
 
 function funds() {
-    $balance = rand(0, 1000);
+    $balance = rand(0,3000);
     return $balance;
 }
 
@@ -83,16 +90,16 @@ $clients = array_map(fn($_) =>  [
     'id_number' => personalId(),
     'acc_number' => accNumber(),
     // 'name' => randString(),
-    'surname' => randString(),
+    'surname' => getLastName(),
     // 'funds' => funds()
-], range(1, 8));
+], range(1, 10));
 
 
 
 $clients = array_map(function($client) {
     // $client['id_number'] = personalId();
     // $client['acc_number'] = accNumber();
-    $client['name'] = randString();
+    $client['name'] = getName();
     // $client['surname'] = randString();
     $client['funds'] = funds();
     return $client;

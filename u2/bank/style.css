@@ -1,4 +1,4 @@
-body {
+body, .main-page {
   background-color: rgba(73, 73, 255, 0.473);
 }
 
@@ -81,4 +81,21 @@ tr{
   border-radius: 0.5em;
   background-color: rgb(230, 203, 255);
   cursor: pointer;
+}
+.outline {
+  width: 90%;
+}
+.create-legend {
+  text-transform: uppercase;
+}
+.main-page-title{
+font-size: 55px;
+text-align: center;
+color: rgb(202, 2, 108);
+text-transform: uppercase;
+margin-top: 20%;
+}
+.btn-main-page{
+  font-size: 25px;
+text-transform: uppercase;
 }

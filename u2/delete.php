@@ -1,25 +1,32 @@
+<?php define('ENTER', true) ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_GET['id'])) {
     http_response_code(400);
     die;
 }
 
-$id =  (int)$_GET['id'];
+session_start();
+$id = (int)$_GET['id'];
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-foreach ($clients as $client) {
+$can_delete = true;
+foreach ($clients as $key => $client) {
     if ($client['id'] == $id) {
         if ($client['funds'] > 0) {
-            // http_response_code(400);
-            echo 'Negalima ištrinti jei sąskaitoje yra daugiau nei 0';
-            die;
+            $can_delete = false;
+            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Negalima ištrinti sąskaitos, turint likutį.'];
+            break; 
+        } else {
+            unset($clients[$key]);
+            $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Saskaita sekmingai istrinta'];
         }
-        break;
     }
 }
-$clients = array_filter($clients, fn($client) => $client['id'] != $id);
 
-$clients = file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
+if ($can_delete) {
+    $clients = array_filter($clients, fn($client) => $client['id'] != $id);
+    file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
+}
 
 header("Location: http://localhost/php-bank/u2/users.php");
 

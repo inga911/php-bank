@@ -1,21 +1,23 @@
+
 <?php
 session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require __DIR__ . '/index.php';
 
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
-    // $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
-    // file_put_contents(__DIR__ . '/id.json', json_encode($id));
 
 
-    foreach ($clients as $client) {
-        if ($client['acc_number'] == $_POST['acc_number']) {
-            die('Jūsų įvesta banko sąskaita jau egzistuoja');
-        }
-        if ($client['id_number'] == $_POST['id_number']) {
-            die('Toks asmens kodas jau egzistuoja');
-        }
-    }
+    // foreach ($clients as $client) {
+    //     if ($client['acc_number'] == $_POST['acc_number']) {
+    //         die('Jūsų įvesta banko sąskaita jau egzistuoja');
+    //     }
+    //     if ($client['id_number'] == $_POST['id_number']) {
+    //         die('Toks asmens kodas jau egzistuoja');
+    //     }
+    //     if ( $_POST['name'] <= 3) {
+    //         die('Vardas turi buti ilgesnis nei 3 raides');
+    //     }
+    // }
     
     
     $client = [
@@ -30,14 +32,6 @@ session_start();
     $clients[] = $client;
     // usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
     file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
-
-    $clients = serialize($clients);
-
-    // $id = json_decode(file_get_contents(__DIR__ . '/id.json'));
-    // $id++;
-    // file_put_contents(__DIR__ . '/id.json', json_encode($id));
-
-
 
     header('Location: http://localhost/php-bank/u2/users.php');
    die;
@@ -54,34 +48,33 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sukurti naują sąskaitą</title>
-    <!-- <link rel="stylesheet" href="style.scss"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body >
-    <a href="http://localhost/php-bank/u2/users.php">HOME</a>
-    <form action="" method="post">
-        <fieldset>
-            <legend>Sukurti sąskaitą: </legend>
-            <label for="name">Vardas: </label>
+    <a  class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
+    <form action="" method="post" class="outline">
+        <fieldset class="outline">
+            <legend class="create-legend">Sukurti sąskaitą: </legend>
+            <label class="create-legend" for="name">Vardas: </label>
             <input type="text" name="name">
             <br><br>
-            <label for="surname">Pavardė: </label>
+            <label class="create-legend" for="surname">Pavardė: </label>
             <input type="text" name="surname">
             <br><br>
-            <label for="acc_number">Sąskaitos numeris: </label>
+            <label class="create-legend" for="acc_number">Sąskaitos numeris: </label>
             <input type="text" name="acc_number" value="LT6010100"><br>
-            <span class="info" style="color:silver; font-size: 13px">Pvz.: LT6010100xxxxxxxxxxx (20 simboliu)</span>
+            <span style="color:grey; font-size: 13px">Pvz.: LT6010100xxxxxxxxxxx (20 simboliu)</span>
             <br><br>
-            <label for="id_number">Asmens kodas: </label>
+            <label class="create-legend" for="id_number">Asmens kodas: </label>
             <input type="text" name="id_number"><br>
-            <span class="info" style="color:silver; font-size: 13px">3-6/ 00-99/ 01-12/ 01-31/ xx/ xx (11 simboliu)</span>
+            <span style="color:grey; font-size: 13px">3-6/ 00-99/ 01-12/ 01-31/ xx/ xx (11 simboliu)</span>
             <br><br>
-            <span class="info" style="color:silver; font-size: 15px">Pradinės lėšos:  0 eurų</span><br>
-            <button type="submit">SUKURTI</button>
+            <span style="color:grey; font-size: 15px">Pradinės lėšos:  0 eurų</span><br>
+            <button type="submit" class="btn">SUKURTI</button>
         </fieldset>
 
     </form>
-
 
 </body>
 

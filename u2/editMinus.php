@@ -1,25 +1,36 @@
 <?php
-    // require __DIR__ . '/index.php';
+define('ENTER', true);
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_GET['id'];
     $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
+
+    $fundsDeducted = false;
 
     foreach ($clients as &$client) {
         if ($client['id'] == $id) {
             $fundsMinus = $_POST['funds'];
             if ($fundsMinus > $client['funds']) {
-                die('Nepakankamai lėšų nuskaičiuoti šiai sumai.');
+                $_SESSION['msg'] = ['type' => 'error', 'text' => 'Nepakankamas sąskaitos likutis nuskaičiuoti Jūsų norimai sumai'];
+                header('Location: http://localhost/php-bank/u2/users.php?id=');
+                die;
             }
-            $client['funds'] = $client['funds'] - $fundsMinus;
+            $client['funds'] -= $fundsMinus;
             file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
-
+            $fundsDeducted = true;
             break;
         }
     }
 
-    header('Location: http://localhost/php-bank/u2/users.php');
-}
+    if ($fundsDeducted) {
+        $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Lėšos nuskaičiuotos sėkmingai.'];
+        header('Location: http://localhost/php-bank/u2/users.php');
+        die;
+    }
 
+    $_SESSION['msg'] = ['type' => 'error', 'text' => 'Nepavyko nuskaičiuoti lėšų.'];
+    header('Location: http://localhost/php-bank/u2/editMinus.php?id=' . $id);
+}
 
 //GET
 
@@ -34,6 +45,7 @@ foreach ($clients as $client) {
     }
 }
 
+
 if (!$find) {
     die('client not found');
 }
@@ -46,22 +58,23 @@ if (!$find) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pridėti lėšų</title>
+    <title>Nuskaičiuoti lėšas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <a href="http://localhost/php-bank/u2/users.php">HOME</a>
+    <a class="btn-menu btn" href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
 
     <form action="http://localhost/php-bank/u2/editMinus.php?id=<?= $client['id'] ?>" method="post">
-        <fieldset>
-            <legend>Pridėti lėšų: </legend>
+        <fieldset  class="outline">
+            <legend>Nuskaičiuoti lėšas: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
             <label for="funds"><b>Nuskaičiuoti nuo sąskaitos: </b></label>
-            <input type="text" name="funds" ><br>
-            <span class="info" style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?></span> <br>
+            <input type="text" name="funds"><br>
+            <p style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?></p> <br>
 
-            <button type="submit">Išsaugoti</button>
+            <button class="btn-menu btn" type="submit">Išsaugoti</button>
         </fieldset>
     </form>
 

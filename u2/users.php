@@ -1,8 +1,9 @@
 <?php
-
+define('ENTER', true);
+session_start();
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
-$page = (int) ($_GET['page'] ?? 1);
+// $page = (int) ($_GET['page'] ?? 1);
 
 
 $sort = $_GET['sort'] ?? '';
@@ -12,9 +13,6 @@ if ($sort == 'surname_asc') {
 elseif ($sort == 'surname_desc') {
     usort($clients, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +23,14 @@ elseif ($sort == 'surname_desc') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-    <link rel="stylesheet" href="style.scss">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <?php require __DIR__ . '/menu.php' ?> 
-<!-- <a href="http://localhost/php-bank/u2/create.php">Sukurti naują sąskaitą</a> -->
-    
+<body class="users-body">
+<?php require __DIR__ . '/bank/menu-log.php' ?>
+<?php require __DIR__ . '/bank/safe/index.php' ?>
+<?php require __DIR__ . '/menu.php' ?>
+     
 <br><br>
     <form action="http://localhost/php-bank/u2/users.php?sort=surname_asc" method="get">
             <legend>RŪŠIUOTI:</legend>
@@ -41,7 +40,6 @@ elseif ($sort == 'surname_desc') {
             </select>
             <button class="btn btn-sort" type="submit">Rūšiuoti</button>
     </form>
-
     
     <table class="table">
   <thead class="info">
@@ -50,8 +48,7 @@ elseif ($sort == 'surname_desc') {
       <th>Vardas</th>
       <th>Asmens kodas</th>
       <th>Banko sąskaitos numeris</th>
-      <th>Likutis</th>
-      <!-- <th style="background-color: red;">ID</th> -->
+      <th>Likutis (eur)</th>
       <th>Veiksmai</th>
     </tr>
   </thead>
@@ -64,7 +61,6 @@ elseif ($sort == 'surname_desc') {
           <td  class="one"><?= $client['id_number'] ?></td>
           <td class="two"><?= $client['acc_number'] ?></td>
           <td class="one"><?= $client['funds']?></td>
-          <!-- <td class="one"><?= $client['id']?></td> -->
           <td class="two">
             <div class="veiksmai">
                 <a class="a-plus btn" href="http://localhost/php-bank/u2/editPlus.php?id=<?= $client['id'] ?>">Pridėti lėšų</a>
