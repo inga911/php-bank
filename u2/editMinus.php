@@ -66,13 +66,13 @@ if (!$find) {
     <a class="btn-menu btn" href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
 
     <form action="http://localhost/php-bank/u2/editMinus.php?id=<?= $client['id'] ?>" method="post">
-        <fieldset  class="outline">
-            <legend>Nuskaičiuoti lėšas: </legend>
+        <fieldset  class="outline-edit-plus">
+            <legend  class="create-legend">Nuskaičiuoti lėšas: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <label for="funds"><b>Nuskaičiuoti nuo sąskaitos: </b></label>
-            <input type="text" name="funds"><br>
-            <p style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?></p> <br>
+            <label class="create-legend" for="funds"><b>Nuskaičiuoti nuo sąskaitos: </b></label>
+            <input class="inputTxt"  type="text" name="funds"><br>
+            <span class="funds">Likutis sąskaitoje: <?= $client['funds'] ?></span><br>
 
             <button class="btn-menu btn" type="submit">Išsaugoti</button>
         </fieldset>

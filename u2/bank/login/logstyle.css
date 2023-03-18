@@ -2,17 +2,16 @@
     background-color: rgba(73, 73, 255, 0.473);
 }
 .login-btn{
-    // background-color:rgb(3, 147, 140);
     color: rgb(0, 0, 0);
     border: 0.5px solid;
     border-radius: 0.4em;
     padding: 5px 10px;
-    display: inline-block;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     background-color: #fdb5bcbb;
     border-color: #946065bb;
-    margin-left: 37%;
+    /* margin-left: 33%; */
+    width: 100%;
     }
 .login-btn:hover {
     background-color: rgba(3, 148, 138, 0.568);
@@ -20,28 +19,28 @@
     cursor: pointer;
 }
 .login-form > div{
-padding: 15px;
+    padding: 15px;
 }
 .login-form {
     background-color: rgba(6, 209, 196, 0.354);
-    width: 50%;
+    width: 25%;
     border-radius: 1em;
     border: 0.5px solid rgba(3, 179, 167, 0.836);
-    margin-left: calc(50% - 220px);
-    margin-top: 5%;
-}
 
+    margin-top: 5%;
+    margin-left: 38%;
+}
 .login-title {
     text-align: center;
-    margin-top: 7%;
+    margin-top: 5%;
     text-transform: uppercase;
     color: rgba(1, 119, 111, 0.742);
     font-size: 45px;
 }
 .login-label {
-    font-size: 25px;
+    font-size: 20px;
 }
-
 .login-input{
     height: 1.5em;
+    border-radius: 0.6em;
 }

@@ -12,12 +12,12 @@ if (!isset($_SESSION['logged'])  || $_SESSION['logged'] != 1) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bankas privatiems klientams</title>
-    <link rel="stylesheet" href="private-style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="private-body">
-    <h1>Sveiki atvykę, <i><?= $_SESSION['name'] ?></i> !
+    <h1>Sveiki atvykę, <i class="user-email"><?= $_SESSION['name'] ?></i> !
         <form action="http://localhost/php-bank/u2/bank/login/?logout" method="post">
-            <button class="logout-btn" type="submit">Atsijungti</button>
+            <button class="logout-btn btn" type="submit">ATSIJUNGTI</button>
         </form>
     </h1>
     <a class="btn" href="http://localhost/php-bank/u2/create.php">PRIDĖTI  NAUJĄ SĄSKAITĄ</a>    

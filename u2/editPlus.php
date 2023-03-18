@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         }
     }
-    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Sėkmingai pridėjote lėšas'];
+    $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Sėkmingai pridėjote lėšas.'];
     header('Location: http://localhost/php-bank/u2/users.php');
     die;
 }
@@ -52,18 +52,18 @@ if (!$find) {
 </head>
 
 <body>
-    <a class="btn" class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
+    <a class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
 
     <form action="http://localhost/php-bank/u2/editPlus.php?id=<?= $client['id'] ?>" method="post">
-        <fieldset>
-            <legend>Pridėti lėšų: </legend>
+        <fieldset  class="outline-edit-plus">
+            <legend  class="create-legend">Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
             <b>Pavardė: </b><?= $client['surname'] ?><br>
-            <label for="funds"><b>Įnešti į sąskaitą: </b></label>
-            <input type="text" name="funds" ><br>
-            <p style="color:grey; font-size: 13px">Likutis sąskaitoje: <?= $client['funds'] ?> Eur.</p> <br>
+            <label class="create-legend" for="funds"><b>Įnešti į sąskaitą: </b></label>
+            <input class="inputTxt" type="text" name="funds" ><br>
+            <span class="funds">Likutis sąskaitoje: <?= $client['funds'] ?> Eur.</span><br>
 
-            <button class="btn-menu btn"  type="submit">Issaugoti</button>
+            <button class="btn-menu btn"  type="submit">Išsaugoti</button>
         </fieldset>
     </form>
 

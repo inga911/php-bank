@@ -6,9 +6,9 @@ $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
         $msg = $_SESSION['msg'];
         unset($_SESSION['msg']);
         $color = match($msg['type']) {
-            'error' => 'crimson',
-            'ok' => 'green',
-            default => 'gray'
+            'error' => '#C0392B ',
+            'ok' => '#1E8449 ',
+            default => '#E0E0E0'
         };
     }
 ?>

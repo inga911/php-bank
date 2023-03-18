@@ -1,16 +1,15 @@
 <?php
+
 define('ENTER', true);
 session_start();
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
-
-// $page = (int) ($_GET['page'] ?? 1);
 
 
 $sort = $_GET['sort'] ?? '';
 if ($sort == 'surname_asc') {
     usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 }
-elseif ($sort == 'surname_desc') {
+if ($sort == 'surname_desc') {
     usort($clients, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
 ?>
@@ -45,11 +44,11 @@ elseif ($sort == 'surname_desc') {
   <thead class="info">
     <tr>
       <th>Pavardė</th>
-      <th>Vardas</th>
+      <th class="th-two">Vardas</th>
       <th>Asmens kodas</th>
-      <th>Banko sąskaitos numeris</th>
+      <th class="th-two">Banko sąskaitos numeris</th>
       <th>Likutis (eur)</th>
-      <th>Veiksmai</th>
+      <th class="th-two">Veiksmai</th>
     </tr>
   </thead>
   <tbody>

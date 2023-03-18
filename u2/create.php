@@ -1,5 +1,6 @@
 
 <?php
+
 session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require __DIR__ . '/index.php';
@@ -14,27 +15,33 @@ session_start();
     //     if ($client['id_number'] == $_POST['id_number']) {
     //         die('Toks asmens kodas jau egzistuoja');
     //     }
-    //     if ( $_POST['name'] <= 3) {
-    //         die('Vardas turi buti ilgesnis nei 3 raides');
-    //     }
+        if ( $_POST['name'] < 3 || $_POST['name'] < 3) {
+            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Vardas ir/ar pavarde turi buti ilgesni nei 3 raides'];
+            header('Location: http://localhost/php-bank/u2/create.php');
+            die;
+        }
     // }
+    // $_SESSION['msg'] = ['type' => 'error', 'text' => 'Sie duomenys jau egsituoja'];
+    // header('Location: http://localhost/php-bank/u2/menu.php');
+    // die;
     
     
     $client = [
         'surname' => $_POST['surname'],
         'name' => $_POST['name'],
-        'acc_number' =>  $_POST['acc_number'],
-        'id_number' => $_POST['id_number'],
+        'acc_number' =>  accNumber(),
+        'id_number' => personalId(),
         'funds' => 0,
         'id' => getUnique(1000)
     ];
 
     $clients[] = $client;
-    // usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
+   
+    usort($clients, fn ($a, $b) => $a['surname'] <=> $b['surname']);
     file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
-
+    
     header('Location: http://localhost/php-bank/u2/users.php');
-   die;
+    die;
 }
 
 
@@ -54,23 +61,22 @@ session_start();
 <body >
     <a  class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
     <form action="" method="post" class="outline">
-        <fieldset class="outline">
+        <fieldset class="outline-create">
             <legend class="create-legend">Sukurti sąskaitą: </legend>
             <label class="create-legend" for="name">Vardas: </label>
-            <input type="text" name="name">
+            <input class="inputTxt" type="text" name="name">
             <br><br>
             <label class="create-legend" for="surname">Pavardė: </label>
-            <input type="text" name="surname">
+            <input  class="inputTxt"  type="text" name="surname">
             <br><br>
-            <label class="create-legend" for="acc_number">Sąskaitos numeris: </label>
-            <input type="text" name="acc_number" value="LT6010100"><br>
-            <span style="color:grey; font-size: 13px">Pvz.: LT6010100xxxxxxxxxxx (20 simboliu)</span>
+            <label class="persId">Sąskaitos numeris ir asmens kodas bus sugeneruotas automatiškai paspaudus mygtuką <u>sukurti</u>. </label><br>
+            <!-- <label class="create-legend" for="acc_number">Sąskaitos numeris: </label>
+            <input type="text" name="acc_number"><br>
             <br><br>
             <label class="create-legend" for="id_number">Asmens kodas: </label>
             <input type="text" name="id_number"><br>
-            <span style="color:grey; font-size: 13px">3-6/ 00-99/ 01-12/ 01-31/ xx/ xx (11 simboliu)</span>
-            <br><br>
-            <span style="color:grey; font-size: 15px">Pradinės lėšos:  0 eurų</span><br>
+            <br><br> -->
+            <span class="funds">Pradinės sąskaitos lėšos:  0 eurų</span><br>
             <button type="submit" class="btn">SUKURTI</button>
         </fieldset>
 

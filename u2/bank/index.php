@@ -13,8 +13,8 @@ define('ENTER', true);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php require __DIR__ . '/menu-log.php' ?>
-    <h1>Sveiki atvykę į banko puslapį!</h1>
+    <h1 class="main-page-title">Sveiki atvykę į banko puslapį!</h1>
+    <?php require __DIR__ . '/menu-log.php' ?>
 </body>
 </html>
 
