@@ -15,11 +15,11 @@ session_start();
     //     if ($client['id_number'] == $_POST['id_number']) {
     //         die('Toks asmens kodas jau egzistuoja');
     //     }
-        if ( $_POST['name'] < 3 || $_POST['name'] < 3) {
-            $_SESSION['msg'] = ['type' => 'error', 'text' => 'Vardas ir/ar pavarde turi buti ilgesni nei 3 raides'];
-            header('Location: http://localhost/php-bank/u2/create.php');
-            die;
-        }
+    if (strlen($_POST['name']) < 4 || strlen($_POST['surname']) < 4) {
+        // $_SESSION['msg'] = ['type' => 'error', 'text' => 'Vardas ir/ar pavarde turi buti ilgesni nei 3 raides'];
+        header('Location: http://localhost/php-bank/u2/create.php?error=name_surname_length');
+        die;
+    }
     // }
     // $_SESSION['msg'] = ['type' => 'error', 'text' => 'Sie duomenys jau egsituoja'];
     // header('Location: http://localhost/php-bank/u2/menu.php');
@@ -60,6 +60,11 @@ session_start();
 
 <body >
     <a  class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
+    
+    <?php if (isset($_GET['error']) && $_GET['error'] === 'name_surname_length'): ?>
+        <h2 class="error" style="color:#C0392B">Vardas ir/ar pavardė turi buti ilgesni nei 3 raidės.</h2>
+    <?php endif; ?>
+
     <form action="" method="post" class="outline">
         <fieldset class="outline-create">
             <legend class="create-legend">Sukurti sąskaitą: </legend>
