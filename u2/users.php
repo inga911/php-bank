@@ -5,13 +5,21 @@ session_start();
 $clients = unserialize(file_get_contents(__DIR__ . '/clients.ser'));
 
 
-$sort = $_GET['sort'] ?? '';
+$sort = '';
+$surname_sort = $_GET['surname_sort'] ?? '';
+if ($surname_sort === 'asc') {
+    $sort = 'surname_asc';
+} elseif ($surname_sort === 'desc') {
+    $sort = 'surname_desc';
+}
+
 if ($sort == 'surname_asc') {
     usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 }
 if ($sort == 'surname_desc') {
     usort($clients, fn($a, $b) => $b['surname'] <=> $a['surname']);
 }
+file_put_contents(__DIR__ . '/clients.ser', serialize($clients));
 ?>
 
 <!DOCTYPE html>
@@ -30,16 +38,14 @@ if ($sort == 'surname_desc') {
 <?php require __DIR__ . '/bank/safe/index.php' ?>
 <?php require __DIR__ . '/menu.php' ?>
      
-<br><br>
-    <form action="http://localhost/php-bank/u2/users.php?sort=surname_asc" method="get">
-            <legend>RŪŠIUOTI:</legend>
-            <select name="sort" class="sort">
-                <option value="surname_asc" <?php if ($sort == 'surname_asc') echo 'selected' ?>>Pavardė A-Z</option>
-                <option value="surname_desc" <?php if ($sort == 'surname_desc') echo 'selected' ?>>Pavardė Z-A</option>
-            </select>
-            <button class="btn btn-sort" type="submit">Rūšiuoti</button>
-    </form>
-    
+<form action="http://localhost/php-bank/u2/users.php" method="get">
+    <legend>RŪŠIUOTI:</legend>
+    <select name="surname_sort" class="sort">
+        <option value="asc" <?php if ($surname_sort === 'asc') echo 'selected' ?>>Pavardė A-Z</option>
+        <option value="desc" <?php if ($surname_sort === 'desc') echo 'selected' ?>>Pavardė Z-A</option>
+    </select>
+    <button class="btn btn-sort" type="submit">Rūšiuoti</button>
+</form>
     <table class="table">
   <thead class="info">
     <tr>

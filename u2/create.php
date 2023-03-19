@@ -27,8 +27,8 @@ session_start();
     
     
     $client = [
-        'surname' => $_POST['surname'],
-        'name' => $_POST['name'],
+        'surname' => ucfirst($_POST['surname']),
+        'name' => ucfirst($_POST['name']),
         'acc_number' =>  accNumber(),
         'id_number' => personalId(),
         'funds' => 0,

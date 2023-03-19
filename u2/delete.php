@@ -18,7 +18,7 @@ foreach ($clients as $key => $client) {
             break; 
         } else {
             unset($clients[$key]);
-            $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Saskaita sėkmingai ištrinta.'];
+            $_SESSION['msg'] = ['type' => 'ok', 'text' => 'Sąskaita sėkmingai ištrinta.'];
         }
     }
 }

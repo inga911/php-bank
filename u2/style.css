@@ -1,5 +1,6 @@
-body, .main-page {
-  background-color: rgba(73, 73, 255, 0.473);
+body, .main-page, .welcome-body {
+  background-color: rgba(73, 73, 255, 0.302);
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .table {
@@ -149,13 +150,18 @@ font-family: 'Times New Roman', Times, serif;
   text-transform: uppercase;
 }
 
-.main-page-title{
+/* .main-page-title{
 font-size: 55px;
 text-align: center;
 color: rgb(202, 2, 108);
 text-transform: uppercase;
 margin-top: 20%;
-}
+} */
+
+/* h1 {
+  text-transform: uppercase !important;
+  color: rgb(202, 2, 108);
+} */
 
 .login-btn{
 margin-left: 15%;

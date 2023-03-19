@@ -89,7 +89,7 @@ $clients = array_map(function($client) {
     return $client;
 }, $clients);
 
-usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
+// usort($clients, fn($a, $b) => $a['surname'] <=> $b['surname']);
 file_put_contents(__DIR__ . '/clients.ser', serialize($clients), FILE_APPEND);
 // echo '<pre>';
 // print_r($clients);

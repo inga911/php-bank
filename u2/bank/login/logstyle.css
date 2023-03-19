@@ -1,6 +1,5 @@
 .login-body {
-    background-color: rgba(73, 73, 255, 0.473);
-}
+    background-color: rgba(73, 73, 255, 0.302)}
 .login-btn{
     color: rgb(0, 0, 0);
     border: 0.5px solid;
@@ -36,6 +35,13 @@
     text-transform: uppercase;
     color: rgba(1, 119, 111, 0.742);
     font-size: 45px;
+}
+.login-info {
+    text-align: center;
+    margin-top: 5%;
+    text-transform: uppercase;
+    font-size: 25px;
+    
 }
 .login-label {
     font-size: 20px;

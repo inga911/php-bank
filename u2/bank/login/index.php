@@ -1,9 +1,5 @@
 <?php 
 session_start();
-// if (isset($_SESSION['logged'])) {
-//     header('Location: http://localhost/php-bank/u2/users.php');
-//     die;
-// }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $users = json_decode(file_get_contents(__DIR__. '/../database/users.json'), 1);
 
@@ -22,7 +18,7 @@ foreach($users as $user) {
         die;
     }
 }
-$_SESSION['msg'] = ['type' => 'error', 'text' => 'Nepavyko prisijungti'];
+$_SESSION['msg'] = ['type' => 'error', 'text' => 'Neteisingas vartotojo vardas arba slaptažodis.'];
 header('Location: http://localhost/php-bank/u2/bank/login/');
 die;
 }
@@ -36,27 +32,28 @@ die;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banko prisijungimas</title>
-    <link rel="stylesheet" href="logstyle.css">
+    <link rel="stylesheet" href="./logstyle.css">
     
 </head>
 <body class="login-body">
-<?php
+
+    <h1 class="login-title">Prisijungti</h1>
+    <?php
     if (isset($_SESSION['msg'])) {
         $msg = $_SESSION['msg'];
         unset($_SESSION['msg']);
         $color = match($msg['type']) {
-            'error' => 'crimson',
-            'ok' => 'skyblue',
-            default => 'gray'
+            'error' => '#C0392B ',
+            'ok' => '#1E8449 ',
+            default => '#E0E0E0'
         };
     }
     ?>
     <?php if(isset($msg)) : ?>
-    <h2 style="color: <?= $color ?>">
+    <h2 style="color: <?= $color ?>; margin-left: calc(50% - 230px);">
         <?= $msg['text'] ?>
     </h2>
     <?php endif ?>
-    <h1 class="login-title">Prisijungti</h1>
     <form action="" method="post" class="login-form">
         <div>
             <label class="login-label">Vartotojo vardas:</label>
