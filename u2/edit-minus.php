@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $_SESSION['msg'] = ['type' => 'error', 'text' => 'Nepavyko nuskaičiuoti lėšų.'];
-    header('Location: http://localhost/php-bank/u2/editMinus.php?id=' . $id);
+    header('Location: http://localhost/php-bank/u2/edit-minus.php?id=' . $id);
 }
 
 //GET
@@ -65,7 +65,7 @@ if (!$find) {
 <body>
     <a class="btn-menu btn" href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
 
-    <form action="http://localhost/php-bank/u2/editMinus.php?id=<?= $client['id'] ?>" method="post">
+    <form action="http://localhost/php-bank/u2/edit-minus.php?id=<?= $client['id'] ?>" method="post">
         <fieldset  class="outline-edit-plus">
             <legend  class="create-legend">Nuskaičiuoti lėšas: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>

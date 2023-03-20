@@ -54,7 +54,7 @@ if (!$find) {
 <body>
     <a class="btn-menu btn"  href="http://localhost/php-bank/u2/users.php">Grįžti į pradinį puslapį</a>
 
-    <form action="http://localhost/php-bank/u2/editPlus.php?id=<?= $client['id'] ?>" method="post">
+    <form action="http://localhost/php-bank/u2/edit-plus.php?id=<?= $client['id'] ?>" method="post">
         <fieldset  class="outline-edit-plus">
             <legend  class="create-legend">Pridėti lėšų: </legend>
             <b>Vardas: </b> <?= $client['name'] ?> <br>
