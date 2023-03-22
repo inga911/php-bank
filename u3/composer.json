@@ -1,0 +1,17 @@
+{
+    "name": "ingab/u3",
+    "description": "bank u3",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ingab\\U3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "inga911",
+            "email": "inga.banaityte221@gmail.com"
+        }
+    ],
+    "require": {}
+}
