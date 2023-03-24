@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Ingab\\U3\\' => array($baseDir . '/src'),
+    '' => array($baseDir . '/'),
 );
