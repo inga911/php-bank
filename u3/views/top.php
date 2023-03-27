@@ -9,4 +9,4 @@
     <title><?= $title ?? 'Untitled' ?></title>
 </head>
 <body>
-    
+    <?php require __DIR__ . '/nav.php';

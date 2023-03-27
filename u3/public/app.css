@@ -7,3 +7,94 @@ h1 {
   -webkit-text-decoration: underline pink;
           text-decoration: underline pink;
 }
+
+.navbar {
+  background-color: rgb(213, 231, 245);
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .links {
+  padding: 15px;
+}
+.navbar .nav-link {
+  text-decoration: none;
+  margin-right: 10px;
+  color: darkblue;
+}
+.navbar .nav-link.nav-link:hover {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
+.navbar .navbar-text {
+  padding: 15px;
+}
+
+.container {
+  background-color: rgba(230, 237, 238, 0.623);
+  width: 40%;
+  margin-left: 30%;
+  border-radius: 1em;
+}
+.container .row {
+  align-items: center;
+}
+.container .card-header {
+  color: darkblue;
+  text-align: center;
+  padding: 8px;
+}
+.container .card-body {
+  padding: 10px;
+}
+.container .add-info {
+  margin-bottom: 10px;
+}
+.container .form-label {
+  font-weight: 600;
+}
+.container .form-control {
+  border-radius: 0.5em;
+  border: 1px solid darkblue;
+  background-color: rgba(239, 239, 251, 0.946);
+}
+.container .form-text {
+  font-size: 13.5px;
+  color: rgb(109, 107, 107);
+}
+.container .btn {
+  margin-top: 10px;
+  border-radius: 0.35em;
+  border: 1px solid darkblue;
+  background-color: rgba(239, 239, 251, 0.946);
+  letter-spacing: 1px;
+}
+.container .btn.btn:hover {
+  cursor: pointer;
+  background-color: rgb(200, 200, 246);
+  box-shadow: 5px 5px 10px -5px darkblue;
+}
+
+.client-line .client-line {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.client-line .client-line .client-info {
+  display: flex;
+  justify-content: space-around;
+}
+.client-line .client-line .client-info span {
+  color: crimson;
+  font-weight: bold;
+  letter-spacing: 5px;
+  padding-left: 20px;
+}
+.client-line .client-line .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 11px;
+}
+.client-line .client-line .btn {
+  text-decoration: none;
+}
