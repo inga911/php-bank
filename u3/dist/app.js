@@ -165,5 +165,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/app"], () => (__webpack_require__("./src/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
-/******/ })()
-;
+/******/ })();

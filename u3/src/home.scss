@@ -1,70 +1,21 @@
-h1 {
-    text-decoration: underline pink;
-}
-
-.navbar {
-    background-color: rgb(213, 231, 245);
+.home {
     display: flex;
-    justify-content: space-between;
-    .links {
-        padding: 15px;
-    }
-    .nav-link {
-        text-decoration: none;
-        margin-right: 10px;
-        color: darkblue;
-        &.nav-link:hover {
-            color: cornflowerblue;
-            text-decoration: underline;
-        }
-    }
-    .navbar-text {
-        padding: 15px;
-    }
-    
-}
-
-.container {
-    background-color: rgba(230, 237, 238, 0.623);
-    width: 40%;
-    margin-left:30%;
-    border-radius: 1em;
-    .row {
-        align-items: center;
-    }
-    .card-header {
-        color: darkblue;
-        text-align: center;
-        padding: 8px;
-    }
-    .card-body {
-        padding: 10px;
-    }
-    .add-info {
-        margin-bottom: 10px;
-    }
-    .form-label {
-        font-weight: 600;
-    }
-    .form-control {
-        border-radius: 0.5em;
-        border: 1px solid darkblue;
-        background-color: rgba(239, 239, 251, 0.946);
-    }
-    .form-text {
-        font-size: 13.5px;
-        color: rgb(109, 107, 107);
-    }
-    .btn{
-        margin-top: 10px;
-        border-radius: 0.35em;
-        border: 1px solid darkblue;
-        background-color:  rgba(239, 239, 251, 0.946);
-        letter-spacing: 1px;
-        &.btn:hover{
-            cursor: pointer;
-            background-color: rgb(200, 200, 246);
-            box-shadow: 5px 5px 10px -5px darkblue;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    h1 {
+        color: skyblue;
+        font-size: 150px;
+        line-height: 1;
+        letter-spacing: 10px;
+        .sub {
+            color: crimson;
+            font-size: 30px;
+            line-height: 1;
+            &.space {
+                letter-spacing: 4.1px;
+            }
         }
     }
 }
