@@ -13,11 +13,12 @@
                                 <div class="client-info">
                                     <?= $client['name'] ?>
                                     <?= $client['surname'] ?>
-                                    <span><?= $client['tt'] ? 'TIK TOK' : 'FB' ?></span>
+                                    <?= $client['balance'] ?>
+                                   
                                 </div>
                                 <div class="buttons">
                                     <a href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="btn btn-info">Show</a>
-                                    <a href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Edit</a>
+                                    <!-- <a href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Edit</a> -->
                                     <form action="<?= URL ?>clients/delete/<?= $client['id'] ?>" method="post">
                                         <button type="submit" class="btn btn-danger">delete</button>
                                     </form>

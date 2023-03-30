@@ -5,13 +5,8 @@
     align-items: center;
     .client-info {
         display: flex;
-        justify-content: space-around;
-        span {
-            color: crimson;
-            font-weight: bold;
-            letter-spacing: 5px;
-            padding-left: 20px;
-        }
+        justify-content: space-between;
+    
     }
     .buttons {
         display: flex;

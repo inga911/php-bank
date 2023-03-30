@@ -36,7 +36,9 @@ class ClientsController {
         $data = [];
         $data['name'] = $_POST['name'];
         $data['surname'] = $_POST['surname'];
-        $data['tt'] = isset($_POST['tt']) ? 1 : 0;
+        $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000,99999999999);
+        $data['persId'] = rand(3,6) . rand(0,99) . rand(01, 12) . rand(1, 31) . rand(1, 31). rand(0, 999). rand(0, 9);
+        $data['balance'] = '0';
         (new Json)->create($data);
         Messages::msg()->addMessage('New client was created', 'success');
         return App::redirect('clients');
@@ -67,9 +69,11 @@ class ClientsController {
         $data = [];
         $data['name'] = $_POST['name'];
         $data['surname'] = $_POST['surname'];
-        $data['tt'] = isset($_POST['tt']) ? 1 : 0;
+        $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000,99999999999);
+        $data['persId'] = rand(3,6) . rand(0,99) . rand(01, 12) . rand(1, 31) . rand(1, 31). rand(0, 999). rand(0, 9);
+        $data['balance'] += $_POST['balance'];
         (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('The client was edited', 'warning');
+        Messages::msg()->addMessage('New funds was added to '. $_POST['name'] . ' account', 'warning');
         return App::redirect('clients');
     }
 

@@ -10854,13 +10854,7 @@ body {
 }
 .client-line .client-info {
   display: flex;
-  justify-content: space-around;
-}
-.client-line .client-info span {
-  color: crimson;
-  font-weight: bold;
-  letter-spacing: 5px;
-  padding-left: 20px;
+  justify-content: space-between;
 }
 .client-line .buttons {
   display: flex;
