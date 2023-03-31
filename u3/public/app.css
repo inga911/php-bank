@@ -10847,11 +10847,6 @@ body {
   letter-spacing: 4.1px;
 }
 
-.head-info {
-  display: flex;
-  justify-content: space-between;
-}
-
 .head-info-list {
   display: flex;
   width: 50%;
@@ -10859,11 +10854,22 @@ body {
   margin-left: 29px;
 }
 
-.client-info {
-  display: flex;
-  margin-left: -25px;
-  justify-content: space-between;
+.card-body-show {
+  text-align: center;
 }
+.card-body-show div {
+  padding: 15px;
+}
+
+.card-body {
+  margin-left: 25px;
+}
+
+.list-btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .client-info .buttons-div {
   width: 23%;
   display: flex;
@@ -10906,7 +10912,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
 }
 
 form.logout {
@@ -10916,4 +10922,7 @@ form.logout button {
   border: none;
   outline: none;
   background-color: transparent;
+}
+form.logout button .button:hover {
+  text-decoration: underline;
 }

@@ -4,7 +4,7 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-header">
-                        <h2>CMS Login</h2>
+                        <h2>Login Bank U3 </h2>
                     </div>
                     <div class="card-body">
                         <form action="<?= URL ?>login" method="post">

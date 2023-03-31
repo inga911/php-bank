@@ -14,16 +14,19 @@ class ClientsController {
             die;
         }
     }
-
     public function index()
     {
         $clients = (new Json)->showAll();
-      
+        usort($clients, function($a, $b) {
+            return strcmp($a['surname'], $b['surname']);
+        });
         return App::views('clients/index', [
             'title' => 'Clients List',
             'clients' => $clients
         ]);
     }
+    
+
 
     public function create()
     {
@@ -33,17 +36,35 @@ class ClientsController {
     }
 
     public function store()
-    {
-        $data = [];
-        $data['name'] = $_POST['name'];
-        $data['surname'] = $_POST['surname'];
-        $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000,99999999999);
-        $data['persId'] = rand(3,6) . rand(0,99) . rand(01, 12) . rand(1, 31) . rand(1, 31). rand(0, 999). rand(0, 9);
-        $data['balance'] = '0';
-        (new Json)->create($data);
-        Messages::msg()->addMessage('New client was created successfully!', 'success');
-        return App::redirect('clients');
+{
+    $data = [];
+    $data['name'] = $_POST['name'];
+    $data['surname'] = $_POST['surname'];
+    $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000,99999999999);
+    $data['persId'] = $_POST['persId'];
+    $data['balance'] = '0';
+
+    $clients = (new Json)->showAll();
+
+    $personalId = $_POST['persId'];
+        if (!preg_match('/^\d{11}$/', $personalId)) {
+            Messages::msg()->addMessage('Personal ID code is invalid', 'danger');
+            return App::redirect('clients/create');
+        }
+
+    // Check if personalId already exists
+    foreach ($clients as $client) {
+        if ($client['persId'] == $data['persId']) {
+            Messages::msg()->addMessage('Personal ID already exists', 'danger');
+            return App::redirect('clients/create');
+        }
     }
+
+    (new Json)->create($data);
+    Messages::msg()->addMessage('New client was created', 'success');
+    return App::redirect('clients');
+}
+
 
     public function show($id)
     {
@@ -87,7 +108,7 @@ class ClientsController {
         $data['persId'] = $client['persId'];
         $data['balance'] = $newBalancePlus;
         (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('New funds was added to '. $_POST['name'] . ' account', 'warning');
+        Messages::msg()->addMessage('New funds was added to '. $_POST['name'] . ' ' . $_POST['surname'] .' account.', 'warning');
         return App::redirect('clients');
     }
     public function updateMinus($id)
@@ -96,7 +117,7 @@ class ClientsController {
         $currentBalance = $client['balance'];
         $newBalanceMinus = $currentBalance - $_POST['balance'];
         if ($_POST['balance'] > $currentBalance){
-            Messages::msg()->addMessage('The amount you want to debit from '. $_POST['name'] . ' account is too large', 'warning');
+            Messages::msg()->addMessage('The amount you want to debit from '. $_POST['name'] . ' ' . $_POST['surname'] .' account is too large.', 'warning');
             return App::redirect('clients/editMinus/' . $client['id']);
         }
         $data = [];
@@ -106,17 +127,20 @@ class ClientsController {
         $data['persId'] = $client['persId'];
         $data['balance'] = $newBalanceMinus;
         (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('Funds was deducted from '. $_POST['name'] . ' account', 'warning');
+        Messages::msg()->addMessage('Funds was deducted from '. $_POST['name'] . ' ' . $_POST['surname'] .' account.', 'warning');
         return App::redirect('clients');
     }
     
-
     public function delete($id)
     {
+        $client = (new Json)->show($id);
+        if ($client['balance'] != 0) {
+            Messages::msg()->addMessage('The client has a balance and cannot be deleted.', 'danger');
+            return App::redirect('clients');
+        }
         (new Json)->delete($id);
         Messages::msg()->addMessage('The client has been deleted.', 'warning');
         return App::redirect('clients');
     }
 
 }
-

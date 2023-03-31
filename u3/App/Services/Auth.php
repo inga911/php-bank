@@ -24,11 +24,11 @@ class Auth {
         foreach($users as $user) {
             if ($user['name'] == $name && $user['psw'] == md5($psw)) {
                 $_SESSION['user'] = $user['name'];
-                Messages::msg()->addMessage('Welcome to Paradise CMS', 'success');
+                Messages::msg()->addMessage('Welcome to Bank U3!', 'success');
                 return true;
             }
         }
-        Messages::msg()->addMessage('Invalid password or user name', 'danger');
+        Messages::msg()->addMessage('Invalid password or user name.', 'danger');
         return false;
     }
 
@@ -36,7 +36,7 @@ class Auth {
     {
         unset($_SESSION['user']);
         $this->user = null;
-        Messages::msg()->addMessage('You are out', 'info');
+        Messages::msg()->addMessage('You are logged out.', 'info');
     }
 
     public function isAuth() : bool

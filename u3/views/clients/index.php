@@ -1,39 +1,36 @@
-<div class="container">
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h1>Clients List</h1>
+                    <h4>Clients List</h4>
                     <div class="head-info-list">
                         <div>Name</div>
-                        <div class="surn">Surname</div>
+                        <div>Surname</div>
                         <div>Balance</div>
+                        <!-- <div>Action</div> -->
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group">
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
                             <?php foreach ($clients as $client) : ?>
-                                <li class="list-group-item">
-                                    <div class="client-line">
-                                        <div class="client-info">
-                                            <div class="head-info-list">
-                                                <div><?= $client['name'] ?></div>
-                                                <div><?= $client['surname'] ?></div>
-                                                <div><?= $client['balance'] ?></div>
-                                            </div>
-
-                                            <div class="buttons-div">
-                                                <a href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="buttons btn btn-info">Show</a>
-                                                <form action="<?= URL ?>clients/delete/<?= $client['id'] ?>" method="post">
-                                                    <button type="submit" class="buttons btn btn-danger">Delete</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                <tr>
+                                    <td><?= $client['name'] ?></td>
+                                    <td><?= $client['surname'] ?></td>
+                                    <td><?= $client['balance'] ?> eur</td>
+                                    <td class="list-btn">
+                                        <a href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="btn btn-info">Show</a>
+                                        <form action="<?= URL ?>clients/delete/<?= $client['id'] ?>" method="post" style="display: inline-block;">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php endforeach ?>
-                        </ul>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
