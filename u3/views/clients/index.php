@@ -8,7 +8,6 @@
                         <div>Name</div>
                         <div>Surname</div>
                         <div>Balance</div>
-                        <!-- <div>Action</div> -->
                     </div>
                 </div>
                 <div class="card-body">

@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Controllers;
+
 use App\App;
 use App\DB\Json;
 use App\Services\Auth;
 use App\Services\Messages;
 
-class ClientsController {
+class ClientsController
+{
 
     public function __construct()
     {
@@ -16,16 +19,16 @@ class ClientsController {
     }
     public function index()
     {
-        $clients = (new Json)->showAll();
-        usort($clients, function($a, $b) {
+        $client = (new Json)->showAll();
+        usort($client, function ($a, $b) {
             return strcmp($a['surname'], $b['surname']);
         });
         return App::views('clients/index', [
             'title' => 'Clients List',
-            'clients' => $clients
+            'clients' => $client
         ]);
     }
-    
+
 
 
     public function create()
@@ -36,34 +39,33 @@ class ClientsController {
     }
 
     public function store()
-{
-    $data = [];
-    $data['name'] = $_POST['name'];
-    $data['surname'] = $_POST['surname'];
-    $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000,99999999999);
-    $data['persId'] = $_POST['persId'];
-    $data['balance'] = '0';
+    {
+        $data = [];
+        $data['name'] = $_POST['name'];
+        $data['surname'] = $_POST['surname'];
+        $data['accNumber'] = 'LT 60 10100 ' . rand(00000000000, 99999999999);
+        $data['persId'] = $_POST['persId'];
+        $data['balance'] = '0';
 
-    $clients = (new Json)->showAll();
+        $clients = (new Json)->showAll();
 
-    $personalId = $_POST['persId'];
+        $personalId = $_POST['persId'];
         if (!preg_match('/^\d{11}$/', $personalId)) {
             Messages::msg()->addMessage('Personal ID code is invalid', 'danger');
             return App::redirect('clients/create');
         }
 
-    // Check if personalId already exists
-    foreach ($clients as $client) {
-        if ($client['persId'] == $data['persId']) {
-            Messages::msg()->addMessage('Personal ID already exists', 'danger');
-            return App::redirect('clients/create');
+        foreach ($clients as $client) {
+            if ($client['persId'] == $data['persId']) {
+                Messages::msg()->addMessage('Personal ID already exists', 'danger');
+                return App::redirect('clients/create');
+            }
         }
-    }
 
-    (new Json)->create($data);
-    Messages::msg()->addMessage('New client was created', 'success');
-    return App::redirect('clients');
-}
+        (new Json)->create($data);
+        Messages::msg()->addMessage('New client was created', 'success');
+        return App::redirect('clients');
+    }
 
 
     public function show($id)
@@ -96,6 +98,7 @@ class ClientsController {
         ]);
     }
 
+
     public function update($id)
     {
         $client = (new Json)->show($id);
@@ -107,8 +110,8 @@ class ClientsController {
         $data['accNumber'] = $client['accNumber'];
         $data['persId'] = $client['persId'];
         $data['balance'] = $newBalancePlus;
-        (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('New funds was added to '. $_POST['name'] . ' ' . $_POST['surname'] .' account.', 'warning');
+        (new Json)->update($id, $data);
+        Messages::msg()->addMessage('New funds was added to ' . $_POST['name'] . ' ' . $_POST['surname'] . ' account.', 'warning');
         return App::redirect('clients');
     }
     public function updateMinus($id)
@@ -116,8 +119,8 @@ class ClientsController {
         $client = (new Json)->show($id);
         $currentBalance = $client['balance'];
         $newBalanceMinus = $currentBalance - $_POST['balance'];
-        if ($_POST['balance'] > $currentBalance){
-            Messages::msg()->addMessage('The amount you want to debit from '. $_POST['name'] . ' ' . $_POST['surname'] .' account is too large.', 'warning');
+        if ($_POST['balance'] > $currentBalance) {
+            Messages::msg()->addMessage('The amount you want to debit from ' . $_POST['name'] . ' ' . $_POST['surname'] . ' account is too large.', 'warning');
             return App::redirect('clients/editMinus/' . $client['id']);
         }
         $data = [];
@@ -126,11 +129,11 @@ class ClientsController {
         $data['accNumber'] = $client['accNumber'];
         $data['persId'] = $client['persId'];
         $data['balance'] = $newBalanceMinus;
-        (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('Funds was deducted from '. $_POST['name'] . ' ' . $_POST['surname'] .' account.', 'warning');
+        (new Json)->update($id, $data);
+        Messages::msg()->addMessage('Funds was deducted from ' . $_POST['name'] . ' ' . $_POST['surname'] . ' account.', 'warning');
         return App::redirect('clients');
     }
-    
+
     public function delete($id)
     {
         $client = (new Json)->show($id);
@@ -142,5 +145,4 @@ class ClientsController {
         Messages::msg()->addMessage('The client has been deleted.', 'warning');
         return App::redirect('clients');
     }
-
 }
