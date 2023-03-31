@@ -10820,6 +10820,7 @@ textarea.form-control-lg {
   }
 }
 body {
+  background-color: darkslateblue;
   margin: 0;
   min-height: 100vh;
 }
@@ -10846,19 +10847,45 @@ body {
   letter-spacing: 4.1px;
 }
 
-.client-line {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-.client-line .client-info {
+.head-info {
   display: flex;
   justify-content: space-between;
 }
-.client-line .buttons {
+
+.head-info-list {
   display: flex;
-  justify-content: flex-end;
+  width: 50%;
+  justify-content: space-between;
+  margin-left: 29px;
+}
+
+.client-info {
+  display: flex;
+  margin-left: -25px;
+  justify-content: space-between;
+}
+.client-info .buttons-div {
+  width: 23%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.client-info-show {
+  display: flex;
+  margin-left: 0px;
+  justify-content: space-between;
+}
+.client-info-show .buttons-div {
+  width: 23%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-buttons {
+  margin-top: 15px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
   gap: 10px;
 }
 

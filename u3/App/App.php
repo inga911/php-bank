@@ -61,12 +61,20 @@ class App {
             return (new ClientsController)->show($url[2]);
         }
 
-        if ($method == 'GET' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'edit') {
-            return (new ClientsController)->edit($url[2]);
+        if ($method == 'GET' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editAdd') {
+            return (new ClientsController)->editAdd($url[2]);
         }
 
-        if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'edit') {
+        if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editAdd') {
             return (new ClientsController)->update($url[2]);
+        }
+
+        if ($method == 'GET' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editMinus') {
+            return (new ClientsController)->editMinus($url[2]);
+        }
+
+        if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editMinus') {
+            return (new ClientsController)->updateMinus($url[2]);
         }
 
         if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'delete') {

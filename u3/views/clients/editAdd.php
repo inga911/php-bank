@@ -6,7 +6,7 @@
                     <h1>Edit Client / Add Funds</h1>
                 </div>
                 <div class="card-body">
-                    <form action="<?= URL ?>clients/edit/<?= $client['id'] ?>" method="post">
+                    <form action="<?= URL ?>clients/editAdd/<?= $client['id'] ?>" method="post">
                         <div class="mb-3">
                             <label class="form-label">Client Name</label>
                             <input type="text" class="form-control" name="name" value="<?= $client['name'] ?>">

@@ -4,27 +4,27 @@
             <div class="card mt-5">
                 <div class="card-header">
                     <h1>Client</h1>
-                    <div style="display: flex; justify-content: space-between">
-                        <div>Vardas</div>
-                        <div>Pavarde</div>
-                        <div>Saskaitos numeris</div>
-                        <div>A.k.</div>
-                        <div>Balansas</div>
+                    <div class="head-info">
+                        <div>Name</div>
+                        <div>Surname</div>
+                        <div>Account number</div>
+                        <div>Personal ID</div>
+                        <div>Balance</div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="client-line">
-                        <div class="client-info" >
-                            <?= $client['name'] ?>
-                            <?= $client['surname'] ?>
-                            <?= $client['accNumber'] ?>
-                            <?= $client['persId'] ?>
-                            <?= $client['balance'] ?>
+                        <div class="client-info-show" >
+                            <div><?= $client['name'] ?></div>
+                            <div><?= $client['surname'] ?></div>
+                            <div><?= $client['accNumber'] ?></div>
+                            <div><?= $client['persId'] ?></div>
+                            <div><?= $client['balance'] ?> eur</div>
                         </div>
-                    </div>
                 </div>
-                <a href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="btn btn-info">Deduct Funds</a>
-                <a href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Add Funds</a>
+                <div class="show-buttons">
+                    <a href="<?= URL ?>clients/editMinus/<?= $client['id'] ?>" class="btn btn-warning">Deduct Funds</a>
+                    <a href="<?= URL ?>clients/editAdd/<?= $client['id'] ?>" class="btn btn-success">Add Funds</a>
+                </div>
             </div>
         </div>
     </div>
