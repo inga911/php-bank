@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 class Auth {
@@ -37,6 +38,8 @@ class Auth {
         unset($_SESSION['user']);
         $this->user = null;
         Messages::msg()->addMessage('You are logged out.', 'info');
+        header('Location: /');
+        die();
     }
 
     public function isAuth() : bool

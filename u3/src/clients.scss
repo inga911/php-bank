@@ -1,13 +1,23 @@
+.container{
+    .card-header{
+        background-color: bisque;
+        .show-title{
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    }
+}
+
 // .head-info {
 //     display: flex; 
 //     justify-content: space-between;
 // }
 .head-info-list{
     display: flex; 
-    width: 40%;
+    width: 46%;
     justify-content: space-between;
-    margin-left: 29px;
-    
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 .card-body-show {
     text-align: center;
@@ -16,17 +26,30 @@
     }
 }
 .card-body {
-    // margin-left: 25px;
+    padding-top: 0;
+    .btn-show{
+        background-color: rgba(123, 184, 248, 0.611);
+        border: none;
+        &:hover{
+            color: #fff;
+            background-color: rgba(15, 124, 240, 0.644);
+        }
+    }
+    .btn-del{
+        background-color: rgba(247, 121, 121, 0.71);
+        color: black;
+        border: none;
+        &:hover{
+            color: #fff;
+            background-color: rgba(250, 33, 33, 0.808);
+        }
+    }
 }
 .list-btn{
     display: flex;
     justify-content: space-evenly;
 }
     .client-info {
-        // display: flex;
-        // margin-left: -25px;
-        // justify-content: space-between;
-        
        .buttons-div {
         width: 23%;
         display: flex;
@@ -35,9 +58,9 @@
     
     }
     .client-info-show {
-        display: flex;
-        margin-left: 0px;
-        justify-content: space-between;
+        // display: flex;
+        // margin-left: 0px;
+        // justify-content: space-between;
         
        .buttons-div {
         width: 23%;
@@ -52,4 +75,19 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
+        .btn-deduct {
+            background-color: rgba(245, 245, 111, 0.612);
+            border: none;
+            &:hover{
+                background-color: rgba(245, 215, 79, 0.869);
+            }
+        }
+        .btn-add {
+            background-color:rgba(144, 238, 144, 0.701);
+            color: black;
+            border: none;
+            &:hover{
+                background-color:rgba(2, 156, 2, 0.794);
+            }
+        }
     }

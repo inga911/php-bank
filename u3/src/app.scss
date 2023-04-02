@@ -1,13 +1,29 @@
 @import '~bootstrap';
 body {
-    background-color: darkslateblue;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, 
+        rgba(238,174,202,0.5495448179271709) 0%,
+        rgba(148,187,233,0.6924019607843137) 100%
+     );
     margin: 0;
-    min-height: 100vh;
+    min-height: 75vh;
 }
 
 @import 'home';
 @import 'clients';
+@import 'nav';
+@import 'edit';
 
+.main-title{
+    text-align: center;
+    margin-left: -10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 50px;
+    background: -webkit-linear-gradient(#07008e, #3d3c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .msg-container {
     display: flex;
     width: 100%;

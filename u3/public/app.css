@@ -10820,9 +10820,10 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-color: darkslateblue;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 0.5495448179) 0%, rgba(148, 187, 233, 0.6924019608) 100%);
   margin: 0;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 .home {
@@ -10830,7 +10831,7 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
 }
 .home h1, .home .h1 {
   color: skyblue;
@@ -10838,20 +10839,21 @@ body {
   line-height: 1;
   letter-spacing: 10px;
 }
-.home h1 .sub, .home .h1 .sub {
-  color: crimson;
-  font-size: 30px;
-  line-height: 1;
+
+.container .card-header {
+  background-color: bisque;
 }
-.home h1 .sub.space, .home .h1 .sub.space {
-  letter-spacing: 4.1px;
+.container .card-header .show-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .head-info-list {
   display: flex;
-  width: 40%;
+  width: 46%;
   justify-content: space-between;
-  margin-left: 29px;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .card-body-show {
@@ -10859,6 +10861,27 @@ body {
 }
 .card-body-show div {
   padding: 15px;
+}
+
+.card-body {
+  padding-top: 0;
+}
+.card-body .btn-show {
+  background-color: rgba(123, 184, 248, 0.611);
+  border: none;
+}
+.card-body .btn-show:hover {
+  color: #fff;
+  background-color: rgba(15, 124, 240, 0.644);
+}
+.card-body .btn-del {
+  background-color: rgba(247, 121, 121, 0.71);
+  color: black;
+  border: none;
+}
+.card-body .btn-del:hover {
+  color: #fff;
+  background-color: rgba(250, 33, 33, 0.808);
 }
 
 .list-btn {
@@ -10872,11 +10895,6 @@ body {
   justify-content: space-between;
 }
 
-.client-info-show {
-  display: flex;
-  margin-left: 0px;
-  justify-content: space-between;
-}
 .client-info-show .buttons-div {
   width: 23%;
   display: flex;
@@ -10889,6 +10907,73 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+}
+.show-buttons .btn-deduct {
+  background-color: rgba(245, 245, 111, 0.612);
+  border: none;
+}
+.show-buttons .btn-deduct:hover {
+  background-color: rgba(245, 215, 79, 0.869);
+}
+.show-buttons .btn-add {
+  background-color: rgba(144, 238, 144, 0.701);
+  color: black;
+  border: none;
+}
+.show-buttons .btn-add:hover {
+  background-color: rgba(2, 156, 2, 0.794);
+}
+
+.nav-item .nav-link:hover {
+  text-decoration: underline;
+  color: rgba(34, 3, 113, 0.909);
+}
+
+.navbar-text .user-email {
+  letter-spacing: 2px;
+  color: darkcyan;
+}
+.navbar-text .logout .logout-btn:hover {
+  text-decoration: underline;
+}
+
+.container .card-header .title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.container .card-body {
+  padding: 15px;
+}
+.container .card-body .mb-3 .client-info {
+  display: flex;
+  margin-top: 15px;
+}
+.container .card-body .btn-deduct {
+  background-color: rgba(245, 245, 111, 0.612);
+  border: none;
+  color: black;
+}
+.container .card-body .btn-deduct:hover {
+  background-color: rgba(245, 215, 79, 0.869);
+}
+.container .card-body .btn-add {
+  background-color: rgba(144, 238, 144, 0.701);
+  color: black;
+  border: none;
+}
+.container .card-body .btn-add:hover {
+  background-color: rgba(2, 156, 2, 0.794);
+}
+
+.main-title {
+  text-align: center;
+  margin-left: -10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 50px;
+  background: -webkit-linear-gradient(#07008e, #3d3c3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .msg-container {

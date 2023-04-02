@@ -1,0 +1,21 @@
+.nav-item {
+    .nav-link {
+        &:hover{
+        text-decoration: underline;
+        color: rgba(34, 3, 113, 0.909);
+        }
+    }
+}
+.navbar-text {
+    .user-email {
+        letter-spacing: 2px;
+        color: darkcyan;
+    }
+    .logout {
+        .logout-btn {
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}

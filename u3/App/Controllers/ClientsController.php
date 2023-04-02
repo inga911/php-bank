@@ -20,9 +20,9 @@ class ClientsController
     public function index()
     {
         $client = (new Json)->showAll();
-        usort($client, function ($a, $b) {
-            return strcmp($a['surname'], $b['surname']);
-        });
+        // usort($client, function ($a, $b) {
+        //     return strcmp($a['surname'], $b['surname']);
+        // });
         return App::views('clients/index', [
             'title' => 'Clients List',
             'clients' => $client

@@ -3,7 +3,7 @@
         <div class="col-8">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h1>Create Client Account</h1>
+                    <h4 class="show-title">Create Account</h4>
                 </div>
                 <div class="card-body">
                     <form action="<?= URL ?>clients/create" method="post">
