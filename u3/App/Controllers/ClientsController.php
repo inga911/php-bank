@@ -48,7 +48,22 @@ class ClientsController
         $data['balance'] = '0';
 
         $clients = (new Json)->showAll();
-
+        if(!preg_match ("/^[a-zA-z]*$/", $_POST['name'] )) {  
+            Messages::msg()->addMessage('Only letters are allowed in name.', 'warning' );  
+            return App::redirect('clients/create');
+        }
+        if(strlen($_POST['name']) < 4 ) {  
+            Messages::msg()->addMessage('Name is too short.', 'warning' );  
+            return App::redirect('clients/create');
+        }
+        if(!preg_match ("/^[a-zA-z]*$/", $_POST['surname'] )) {  
+            Messages::msg()->addMessage('Only letters are allowed in surname.', 'warning' );  
+            return App::redirect('clients/create');
+        }
+        if(strlen($_POST['surname']) < 4 ) {  
+            Messages::msg()->addMessage('Surname is too short.', 'warning' );  
+            return App::redirect('clients/create');
+        }
         $personalId = $_POST['persId'];
         if (!preg_match('/^\d{11}$/', $personalId)) {
             Messages::msg()->addMessage('Personal ID code is invalid', 'danger');

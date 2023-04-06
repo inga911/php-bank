@@ -17,12 +17,6 @@ class Messages {
             $this->getMessages = $_SESSION['msg'];
             unset($_SESSION['msg']);
         }
-        // testing
-        // $this->setMessages = [
-        //     ['text' => 'Labai viskas blogai', 'type' => 'danger'],
-        //     ['text' => 'Labai viskas gerai', 'type' => 'success'],
-        //     ['text' => 'Kad nelabai viskas', 'type' => 'info']
-        // ];
 
     }
 
