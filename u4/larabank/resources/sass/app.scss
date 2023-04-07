@@ -1,8 +1,64 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Work+Sans&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.head-info-list{
+    display: flex; 
+    width: 53%;
+    justify-content: space-between;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+}
+.card-body-show {
+    text-align: center;
+    div{
+        padding: 15px;
+    }
+}
+.card-body {
+    table{
+        tr{
+            td{
+                width: 22%;
+            }
+        }
+    }
+    padding-top: 0;
+    .btn-show{
+        background-color: rgba(123, 184, 248, 0.611);
+        border: none;
+        &:hover{
+            color: #fff;
+            background-color: rgba(15, 124, 240, 0.644);
+        }
+    }
+    .btn-del{
+        background-color: rgba(247, 121, 121, 0.71);
+        color: black;
+        border: none;
+        &:hover{
+            color: #fff;
+            background-color: rgba(250, 33, 33, 0.808);
+        }
+    }
+}
+.list-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+.main-title{
+    text-align: center;
+    margin-left: -10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 40px;
+    background: -webkit-linear-gradient(#07008e, #3d3c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
