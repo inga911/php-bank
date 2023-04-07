@@ -17,19 +17,25 @@
                 <div class="card-body">
                     <table class="table">
                         <tbody>
-                            @foreach ($clients as $client)
-                                <tr>
+                            @forelse($clients as $client)
+                                <tr class="list">
                                     <td>{{ $client->surname }}</td>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->balance }} eur</td>
                                     <td class="list-btn">
                                         <a href="{{ route('clients-show', $client) }}" class="btn btn-info btn-show">Show</a>
-                                        <form action="" method="post" style="display: inline-block;">
+                                        <form action="{{ route('clients-delete', $client) }}" method="post" style="display: inline-block;">
                                             <button type="submit" class="btn btn-danger btn-del">Delete</button>
+                                            @csrf
+                                            @method('delete')
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <div class=" mt-4">
+                                <div class="client-line">No Clients yet</div>
+                            </div>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

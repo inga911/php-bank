@@ -12,13 +12,13 @@
                         <form action="{{route('clients-store')}}" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                 <div class="form-text">The name must consist of at least 3 letters and cannot contain any of the following characters: \ / : * ? < > | + - </div>
 
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Surname</label>
-                                <input type="text" class="form-control" name="surname">
+                                <input type="text" class="form-control" name="surname" value="{{old('surname')}}">
                                 <div class="form-text">The surname must consist of at least 3 letters and cannot contain any of the following characters: \ / : * ? < > | + - </div>
 
                             </div>

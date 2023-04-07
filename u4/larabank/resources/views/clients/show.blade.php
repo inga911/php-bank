@@ -17,8 +17,8 @@
                             <div><b>Balance: </b>{{ $client->balance }} eur</div> --}}
                 </div>
                 <div class="show-buttons">
-                    {{-- <a href="{{ URL }}clients/editMinus/{{ $client->id }}" class="btn btn-warning btn-deduct">Deduct Funds</a>
-                    <a href="{{ URL }}clients/editAdd/{{ $client->id }}" class="btn btn-success btn-add">Add Funds</a> --}}
+                    <a href="{{ route('clients-editminus', $client)}}" class="btn btn-warning btn-deduct">Deduct Funds</a>
+                    <a href="{{ route('clients-editadd', $client)}}" class="btn btn-success btn-add">Add Funds</a>
                 </div>
             </div>
         </div>

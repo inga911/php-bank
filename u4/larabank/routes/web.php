@@ -23,6 +23,11 @@ Route::prefix('clients')->name('clients-')->group(function() {
     Route::get('/create', [ClientController::class, 'create'])->name('create');
     Route::post('/create', [ClientController::class, 'store'])->name('store');
     Route::get('/{client}', [ClientController::class, 'show'])->name('show');
+    Route::get('/editadd/{client}', [ClientController::class, 'editadd'])->name('editadd');
+    Route::put('/editadd/{client}', [ClientController::class, 'update'])->name('update');
+    Route::get('/editminus/{client}', [ClientController::class, 'editminus'])->name('editminus');
+    Route::put('/editminus/{client}', [ClientController::class, 'update'])->name('update');
+    Route::delete('/delete/{client}', [ClientController::class, 'destroy'])->name('delete');
 
 });
 
