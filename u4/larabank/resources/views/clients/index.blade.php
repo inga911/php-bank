@@ -2,12 +2,11 @@
 
 @section('content')
 <h2 class="main-title">Clients List</h2>
-    <div class="container">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card mt-5">
                 <div class="card-header">
-                    
                     <div class="head-info-list">
                         <div>Surname</div>
                         <div>Name</div>

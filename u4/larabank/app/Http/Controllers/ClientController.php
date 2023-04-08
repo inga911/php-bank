@@ -85,24 +85,7 @@ class ClientController extends Controller
 
     public function updateadd(Request $request, Client $client)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'nullable|min:3',
-            'surname' => 'nullable|min:3',
-            'personId' => 'nullable|numeric|min_digits:11|max_digits:11',
-            'accNumb' => 'nullable|min:22',
-        ]);
-
-        if ($validator->fails()) {
-            $request->flash();
-            return redirect()
-                ->back()
-                ->withErrors($validator);
-        }
-
-        $client->name = $request->name;
-        $client->surname = $request->surname;
-        $client->personId = $request->personId;
-        $client->accNumb = $request->accNumb;
+       
         $new_balance_add = $client->balance + $request->balance;
         $client->balance = $new_balance_add;
         $client->save();
@@ -112,6 +95,23 @@ class ClientController extends Controller
     }
 
     public function updateminus(Request $request, Client $client)
+    {
+        $new_balance_minus = $client->balance - $request->balance;
+        $client->balance = $new_balance_minus;
+        // if ($request->has('editminus')) {
+        //     if ($request->balance > $client->balance) {
+        //         return redirect()
+        //             ->back()
+        //             ->with('error','The amount to be withdrawn is greater than the balance on the account.');
+        //     }
+        // }
+        $client->save();
+        return redirect()
+            ->route('clients-index')
+            ->with('ok', 'The funds was deducted successfully');
+    }
+
+    public function updateinfo(Request $request, Client $client)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|min:3',
@@ -131,20 +131,12 @@ class ClientController extends Controller
         $client->surname = $request->surname;
         $client->personId = $request->personId;
         $client->accNumb = $request->accNumb;
-        $new_balance_minus = $client->balance - $request->balance;
-        $client->balance = $new_balance_minus;
-        // if ($request->has('editminus')) {
-        //     if ($request->balance > $client->balance) {
-        //         return redirect()
-        //             ->back()
-        //             ->with('error','The amount to be withdrawn is greater than the balance on the account.');
-        //     }
-        // }
         $client->save();
         return redirect()
             ->route('clients-index')
-            ->with('ok', 'The funds was deducted successfully');
+            ->with('ok', 'The client info was updated successfully');
     }
+
 
     public function destroy(Client $client)
     {

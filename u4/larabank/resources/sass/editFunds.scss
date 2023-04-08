@@ -1,0 +1,46 @@
+.container {
+    .row {
+        .col-4 {
+            .card {
+                .card-header{
+                    .title{
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                    }
+                }
+                .card-body {
+                    .names {
+                        margin: 15px 0;
+                            div{
+                                margin: 8px 0;
+                            }
+                    }
+                    .btn-deduct{
+                        background-color: rgba(245, 245, 111, 0.612);
+                        border: none;
+                        color: black;
+                        &:hover{
+                            background-color: rgba(245, 215, 79, 0.869);
+                        }
+                    }
+                    .btn-add {
+                        background-color:rgba(144, 238, 144, 0.701);
+                        color: black;
+                        border: none;
+                        &:hover{
+                            background-color:rgba(2, 156, 2, 0.794);
+                        }
+                    }
+                    .btn-show{
+                        background-color: rgba(123, 184, 248, 0.611);
+                        border: none;
+                        color: #000000;
+                        &:hover{
+                            background-color: rgba(15, 124, 240, 0.644);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

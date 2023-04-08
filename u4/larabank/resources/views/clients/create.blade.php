@@ -22,12 +22,11 @@
                                 <div class="form-text">The surname must consist of at least 3 letters and cannot contain any of the following characters: \ / : * ? < > | + - </div>
 
                             </div>
-                            {{-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label class="form-label">Personal ID number</label>
-                                <input type="text" class="form-control" name="personId">
+                                <input type="text" class="form-control" name="personId"  value="{{old('personId')}}">
                                 <div class="form-text">Personal ID number must contain 11 numbers</div>
-
-                            </div> --}}
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">*Bank Account Number will be generated automatically.</label>
                             </div>
