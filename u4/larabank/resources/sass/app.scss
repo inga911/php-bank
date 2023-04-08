@@ -24,8 +24,6 @@
 .card-body {
     table{
         .list{
-            td{
-            }
             .list-btn{
                 .list-btn{
                     display: flex;
@@ -106,6 +104,14 @@
         border: none;
         &:hover{
             background-color: rgba(245, 215, 79, 0.869);
+        }
+    }
+    .btn-show{
+        background-color: rgba(123, 184, 248, 0.611);
+        border: none;
+        &:hover{
+            color: #000000;
+            background-color: rgba(15, 124, 240, 0.644);
         }
     }
     .btn-add {

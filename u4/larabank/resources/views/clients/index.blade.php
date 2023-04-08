@@ -21,7 +21,7 @@
                                 <tr class="list">
                                     <td>{{ $client->surname }}</td>
                                     <td>{{ $client->name }}</td>
-                                    <td>{{ $client->balance }} eur</td>
+                                    <td>{{ $client['balance'] }} eur</td>
                                     <td class="list-btn">
                                         <a href="{{ route('clients-show', $client) }}" class="btn btn-info btn-show">Show</a>
                                         <form action="{{ route('clients-delete', $client) }}" method="post" style="display: inline-block;">

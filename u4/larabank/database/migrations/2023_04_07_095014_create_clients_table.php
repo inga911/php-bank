@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('surname', 100);
-            // $table->string('personId', 11);
-            // $table->string('accNumb', 20);
-            // $table->decimal('balance', 20, 2)->default(0);
+            $table->string('personId', 11);
+            $table->string('accNumb', 50);
+            $table->float('balance', 8, 2)->default(0);
             $table->timestamps();
         });
     }
