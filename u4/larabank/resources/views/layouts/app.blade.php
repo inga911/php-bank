@@ -16,6 +16,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -41,6 +42,9 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('clients-create') }}">
                                     New client
+                                </a>
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    Home
                                 </a>
                             </div>
 

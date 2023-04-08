@@ -20,6 +20,14 @@ class ClientController extends Controller
             'clients' => $clients
         ]);
     }
+    
+    public function home()
+    {
+        $totalClients = Client::count()->get();
+        return view('home', [
+            'totalClients' => $totalClients
+        ]);
+    }
 
     public function create(Client $client)
     {
@@ -53,6 +61,7 @@ class ClientController extends Controller
         return redirect()
             ->route('clients-index')
             ->with('ok', 'New client was created');
+        
     }
 
     public function show(Client $client)
@@ -97,14 +106,12 @@ class ClientController extends Controller
     public function updateminus(Request $request, Client $client)
     {
         $new_balance_minus = $client->balance - $request->balance;
+        if ($request->balance > $client->balance) {
+            return redirect()
+                ->back()
+                ->with('error','The amount to be withdrawn is greater than the balance on the account.');
+        }
         $client->balance = $new_balance_minus;
-        // if ($request->has('editminus')) {
-        //     if ($request->balance > $client->balance) {
-        //         return redirect()
-        //             ->back()
-        //             ->with('error','The amount to be withdrawn is greater than the balance on the account.');
-        //     }
-        // }
         $client->save();
         return redirect()
             ->route('clients-index')
@@ -140,6 +147,12 @@ class ClientController extends Controller
 
     public function destroy(Client $client)
     {
+        if ($client->balance > 0) {
+            return redirect()
+                ->route('clients-index')
+                ->with('error', 'Cannot delete client with balance.');
+        }
+
         $client->delete();
         return redirect()
             ->route('clients-index')

@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 Route::prefix('clients')->name('clients-')->group(function() {
     Route::get('/', [ClientController::class, 'index'])->name('index');
+
+    Route::get('/home', [ClientController::class, 'home'])->name('home');
+    
     Route::get('/create', [ClientController::class, 'create'])->name('create');
     Route::post('/create', [ClientController::class, 'store'])->name('store');
 
