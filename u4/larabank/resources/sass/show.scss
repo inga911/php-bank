@@ -3,6 +3,7 @@
     .row {
         .col-8 {
             .card {
+                background: linear-gradient(#57606f, #2f3542);
                 .card-header{
                     .title{
                         text-transform: uppercase;
@@ -11,6 +12,7 @@
                 }
                 .info-table{
                     .card-body-show {
+                        color: #fff;
                         text-align: center;
                         div{
                             padding: 15px;
@@ -26,6 +28,7 @@
                             background-color: rgba(245, 245, 111, 0.612);
                             border: none;
                             &:hover{
+                                color: #fff;
                                 background-color: rgba(245, 215, 79, 0.869);
                             }
                         }
@@ -33,7 +36,7 @@
                             background-color: rgba(123, 184, 248, 0.611);
                             border: none;
                             &:hover{
-                                color: #000000;
+                                color: #fff;
                                 background-color: rgba(15, 124, 240, 0.644);
                             }
                         }
@@ -42,6 +45,7 @@
                             color: black;
                             border: none;
                             &:hover{
+                                color: #fff;
                                 background-color:rgba(2, 156, 2, 0.794);
                             }
                         }

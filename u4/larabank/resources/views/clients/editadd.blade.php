@@ -19,7 +19,7 @@
                             <label class="form-label">Enter an amount you want to add</label>
                             <input type="text" class="form-control" name="balance" >
                             <input type="hidden" name="balace" value="{{ $client->balance }}">
-                            <span style="color: grey; font-size: 12px">Remaining funds: {{ $client->balance }} eur</span>
+                            <span>Remaining funds: {{ $client->balance }} eur</span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-add">Confirm</button>
                     @csrf

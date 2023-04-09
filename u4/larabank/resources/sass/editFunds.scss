@@ -2,23 +2,35 @@
     .row {
         .col-4 {
             .card {
+                background-color: #0000000d;
+                box-shadow: 0 15px 25px rgba(0,0,0,6);
                 .card-header{
                     .title{
                         text-transform: uppercase;
                         letter-spacing: 2px;
+                        color: #fff;
                     }
                 }
                 .card-body {
                     .names {
+                        color: #fff;
                         margin: 15px 0;
                             div{
                                 margin: 8px 0;
                             }
                     }
+                    .form-label {
+                        color: #fff;
+                    }
+                    span {
+                        color: #fff;
+                        font-size: 12px;
+                    }
                     .btn-deduct{
                         background-color: rgba(245, 245, 111, 0.612);
                         border: none;
                         color: black;
+                        margin-top: 10px;
                         &:hover{
                             background-color: rgba(245, 215, 79, 0.869);
                         }

@@ -11,7 +11,6 @@
 @import 'show.scss';
 @import 'editFunds.scss';
 @import 'home.scss';
-@import 'welcome.scss';
 @import 'login.scss';
 @import 'register.scss';
 @import 'navbar.scss';
@@ -39,13 +38,49 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+a .login-buttons {
+    text-align: center;
+    .button-link {
+        .login-btn{
+            border: none;
+            background: none;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            &:hover {
+                background: #03e8f47b;
+                color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 5px #03e9f4,
+                            0 0 15px #03e9f4,
+                            0 0 30px #03e9f4,
+                            0 0 50px #03e9f4;
+            }
+        }
+    }
+
+}
 
 .container {
     .row{
         .col-8{
             .card {
+                background-color: #0000000d;
+                box-shadow: 0 15px 25px rgba(0,0,0,6);
                 .card-header{
+                    color: #fff;
                     .head-info-list{
+                        color: #fff;
                         display: flex; 
                         width: 53%;
                         justify-content: space-between;
@@ -54,28 +89,78 @@ body {
                     }
                 }
                 .card-body{
+                    .form-label {
+                        color: #fff;
+                    }
                     table{
                         .list{
+                            color: #fff;
+                            padding: 5px;
                             .list-btn{
-                                display: flex;
-                                justify-content: space-evenly;
+                                .btn{
+                                    border: none;
+                                    background: none;
+                                    overflow: hidden;
+                                    transition: .5s;
+                                    letter-spacing: 4px;
+                                    &:hover {
+                                        background: #03e8f47b;
+                                        color: #fff;
+                                        border-radius: 5px;
+                                        box-shadow: 0 0 5px #03e9f4,
+                                                    0 0 15px #03e9f4,
+                                                    0 0 30px #03e9f4,
+                                                    0 0 50px #03e9f4;
+                                    }
+                                }
                                 .btn-show{
-                                    background-color: rgba(123, 184, 248, 0.611);
-                                    border: none;
-                                    &:hover{
+                                    &:hover {
+                                        background: #01799da3;
                                         color: #fff;
-                                        background-color: rgba(15, 124, 240, 0.644);
+                                        border-radius: 5px;
+                                        box-shadow: 0 0 5px #0396bf81,
+                                                    0 0 15px #0396bf81,
+                                                    0 0 30px #0396bf81,
+                                                    0 0 30px #0396bf81;
                                     }
                                 }
-                                .btn-del{
-                                    background-color: rgba(247, 121, 121, 0.71);
-                                    color: black;
-                                    border: none;
-                                    &:hover{
-                                        color: #fff;
-                                        background-color: rgba(250, 33, 33, 0.808);
+                                .btn-del{ 
+                                    &:hover {
+                                    background: #9c02197b;
+                                    color: #fff;
+                                    border-radius: 5px;
+                                    box-shadow: 0 0 5px #f532507b,
+                                                0 0 15px #f532507b,
+                                                0 0 30px #f532507b,
+                                                0 0 30px #f532507b;
                                     }
                                 }
+                            }
+                        }
+                        .create-btn{
+                            border: none;
+                            background: none;
+                            text-align: center;
+                            position: relative;
+                            display: inline-block;
+                            padding: 10px 20px;
+                            color: #03e9f4;
+                            font-size: 16px;
+                            text-decoration: none;
+                            text-transform: uppercase;
+                            overflow: hidden;
+                            transition: .5s;
+                            margin-top: 40px;
+                            letter-spacing: 4px;
+                            margin-bottom: 5px;
+                            &:hover {
+                                background: #03e8f47b;
+                                color: #fff;
+                                border-radius: 5px;
+                                box-shadow: 0 0 5px #03e9f4,
+                                            0 0 15px #03e9f4,
+                                            0 0 30px #03e9f4,
+                                            0 0 50px #03e9f4;
                             }
                         }
                     }
