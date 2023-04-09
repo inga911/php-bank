@@ -2,12 +2,11 @@
 
 @section('content')
 
-{{-- <div class="container" >
-    <div class="row justify-content-center"> --}}
-        {{-- <div class="col-md-8"> --}}
+<div class="container" >
+    {{-- <div class="row justify-content-center">  --}}
+        <div class="col-md-12">
            
-                <h1>Welcome,  {{ Auth::user()->name }}!</h1>
-                {{-- <h4>Total clients: {{ route('home', $totalClients)}}</h4> --}}
+                <h1 class="welcome-title">Welcome,  {{ Auth::user()->name }}!</h1>
 
                 <div>
                     @if (session('status'))
@@ -16,12 +15,18 @@
                         </div>
                     @endif
 
-                   <div>You are logged in!</div>
+                   <p class="welcome-title">You are logged in!</p>
+                   <div class="info">
+                       <h4 class="info-title">Today in our bank we have: </h4>
+                       <h5 class="info-title">Clients: </h5>
+                       <h5 class="info-title">Money form all clients: </h5>
+                   </div>
                 </div>
-                <img src="{{  asset('images/bank.jpg')}}" alt="bank">
-            
-        {{-- </div> --}}
-    {{-- </div>
-</div> --}}
+
+                    <img src="{{  asset('images/success_factors.svg')}}" alt="bank">
+
+        </div>
+    {{-- </div> --}}
+</div> 
 
 @endsection

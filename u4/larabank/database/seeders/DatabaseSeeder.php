@@ -18,7 +18,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Briedis',
             'email' => 'briedis@gmail.com',
             'password' => Hash::make('123'),
-        ]);
+        ],
+        [
+            'name' => 'Zuikis',
+            'email' => 'zuikis@example.com',
+            'password' => Hash::make('123'),
+    ]);
         // $faker = Faker::create('lt_LT');
         $faker = Faker::create('fr_FR'); 
 

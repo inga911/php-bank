@@ -19,7 +19,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -36,7 +36,7 @@
                                 Clients
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-black dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('clients-index') }}">
                                     Clients list
                                 </a>
@@ -91,7 +91,7 @@
         </nav>
         @include('layouts.errors')
         @include('layouts.messages')
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

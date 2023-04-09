@@ -1,0 +1,28 @@
+#app{
+    .navbar{
+        background: rgba(36, 35, 35, 0.057);
+        box-sizing: border-box;
+        box-shadow: 0 5px 8px rgba(36, 35, 35, 0.4);
+    }
+    .nav-link {
+        color: #02bdc7;
+        letter-spacing: 3px;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    .navbar-brand {
+        color: #05ebf8;
+        letter-spacing: 3px;
+        font-weight: 600;
+    }
+
+        .navbar-nav .me-auto {
+            .nav-item .dropdown{
+            .dropdown-menu {
+                background: rgba(0,0,0,7);
+                }
+            }}
+        }
+    
+  

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-                <div class="card mt-5">
+                <div class="card mt-5 create-bg-dark">
                     <div class="card-header">
                         <h4 class="show-title">Create Account</h4>
                     </div>

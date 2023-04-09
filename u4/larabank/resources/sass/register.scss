@@ -1,10 +1,10 @@
-.login-body {
+.register-body {
     margin: 0;
     padding: 0;
     background: linear-gradient(#57606f, #2f3542);
     background-repeat:no-repeat;
-    height: 100vh;
-    .login-box {
+    // height: 100vh;
+    .register-box {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -15,8 +15,9 @@
         box-sizing: border-box;
         box-shadow: 0 15px 25px rgba(0,0,0,6);
         border-radius: 10px;
-        .login-title {
-            margin: 0 0 30px;
+        .register-title {
+            font-size: 20px;
+            margin: 0 0 20px;
             padding: 0;
             color: #fff;
             text-align: center;
@@ -26,11 +27,12 @@
         .user-box {
             position: relative;
             input {
+                height: 30%;
                 width: 100%;
-                padding: 10px 0;
-                font-size: 16px;
+                padding: 5px 0;
+                font-size: 13px;
                 color: #fff;
-                margin-bottom: 30px;
+                margin-bottom: 15px;
                 border: none;
                 border-bottom: 1px solid #fff;
                 outline: none;
@@ -40,7 +42,7 @@
                 top: 0;
                 left: 0;
                 padding: 10px 0;
-                font-size: 16px;
+                font-size: 13px;
                 color: #fff;
                 pointer-events: none;
                 transition: .5s;
@@ -60,10 +62,10 @@
         // .forgot-link:hover{
         //     cursor: pointer;
         // }
-        .login-buttons {
+        .register-buttons {
             text-align: center;
             .button-link {
-                .login-btn{
+                .register-btn{
                     border: none;
                     background: none;
                     text-align: center;
