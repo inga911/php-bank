@@ -28,10 +28,36 @@
             }
         }
     }
-    img{
-        width: 35%;
-        position: absolute;
-        top: 50%;
-        left: 35%;
+    .analytic{
+        color: #fff;
+        font-size: 25px;
+        display: flex;
+        img{
+            margin-top: 50px;
+            width: 500px;
+        }
+        div{
+
+            h3{
+                font-size: 20px;
+                margin-top: 160px;
+                letter-spacing: 2px;
+                span{
+                    font-weight: 700;
+                    font-size: 30px;
+                    color: rgb(54, 255, 228);
+                }
+            }
+            h4{
+                font-size: 20px;
+                margin-top: 5px;
+                letter-spacing: 2px;
+                span{
+                    font-weight: 700;
+                    font-size: 30px;
+                    color: rgb(54, 255, 228);
+                }
+            }
+        }
     }
 }

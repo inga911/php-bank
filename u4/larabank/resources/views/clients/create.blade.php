@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-6">
                 <div class="card mt-5 create-bg-dark">
                     <div class="card-header">
                         <h4 class="title">Create Account</h4>
@@ -13,19 +13,14 @@
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <input type="text" class="form-control" name="name" value="{{old('name')}}">
-                                {{-- <div class="form-text">The name must consist of at least 3 letters and cannot contain any of the following characters: \ / : * ? < > | + - </div> --}}
-
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Surname</label>
                                 <input type="text" class="form-control" name="surname" value="{{old('surname')}}">
-                                {{-- <div class="form-text">The surname must consist of at least 3 letters and cannot contain any of the following characters: \ / : * ? < > | + - </div> --}}
-
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Personal ID number</label>
                                 <input type="text" class="form-control" name="personId"  value="{{old('personId')}}">
-                                {{-- <div class="form-text">Personal ID number must contain 11 numbers</div> --}}
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">*Bank Account Number will be generated automatically.</label>

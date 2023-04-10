@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ Route::prefix('clients')->name('clients-')->group(function() {
     Route::get('/', [ClientController::class, 'index'])->name('index');
 
     Route::get('/home', [ClientController::class, 'home'])->name('home');
-    
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::get('/create', [ClientController::class, 'create'])->name('create');
     Route::post('/create', [ClientController::class, 'store'])->name('store');
 

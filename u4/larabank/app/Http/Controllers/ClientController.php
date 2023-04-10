@@ -5,33 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class ClientController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+
+        $totalClients = Client::count();
+         View::share('totalClients', $totalClients);
     }
 
     public function index(Request $request)
     {
-        // Get the selected sorting option from the request
-    $sortBy = $request->input('sort_by', 'surname');
-
-    // Query the clients table and order the results by the selected sorting option
-    $clients = Client::orderBy($sortBy)->get();
-
-    return view('clients.index', [
-        'clients' => $clients
-    ]);
+        $sortBy = $request->input('sort_by', 'surname');
+        $clients = Client::orderBy($sortBy)->get();
+        $totalClients = Client::count();
+        
+        return view('clients.index', [
+            'clients' => $clients,
+            'home' => $totalClients
+        ]);
     }
-    
+
     public function home()
     {
-        $totalClients = Client::count()->get();
-        return view('home', [
-            'totalClients' => $totalClients
-        ]);
+        $totalClients = Client::count();
+        return view('home', compact('totalClients'));
     }
 
     public function create(Client $client)

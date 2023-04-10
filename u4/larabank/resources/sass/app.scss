@@ -128,7 +128,6 @@ a .login-buttons {
                                     overflow: hidden;
                                     transition: .5s;
                                     letter-spacing: 4px;
-                                    
                                     &:hover {
                                         background: #03e8f47b;
                                         color: #fff;
@@ -165,35 +164,37 @@ a .login-buttons {
                                 }
                             }
                         }
-                        .create-btn{
-                            border: none;
-                            background: none;
-                            text-align: center;
-                            position: relative;
-                            display: inline-block;
-                            padding: 10px 20px;
-                            color: #03e9f4;
-                            font-size: 16px;
-                            text-decoration: none;
-                            text-transform: uppercase;
-                            overflow: hidden;
-                            transition: .5s;
-                            margin-top: 40px;
-                            letter-spacing: 4px;
-                            margin-bottom: 5px;
-                            &:hover {
-                                background: #03e8f47b;
-                                color: #fff;
-                                border-radius: 5px;
-                                box-shadow: 0 0 5px #03e9f4,
-                                            0 0 15px #03e9f4,
-                                            0 0 30px #03e9f4,
-                                            0 0 50px #03e9f4;
+                        
                             }
+                        }
+                    }
+                    .create-btn{
+                        border: none;
+                        background: none;
+                        text-align: center;
+                        position: relative;
+                        display: inline-block;
+                        padding: 10px 20px;
+                        color: #03e9f4;
+                        font-size: 16px;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        overflow: hidden;
+                        transition: .5s;
+                        margin-top: 40px;
+                        letter-spacing: 4px;
+                        margin-bottom: 5px;
+                        &:hover {
+                            background: #03e8f47b;
+                            color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 0 5px #03e9f4,
+                                        0 0 15px #03e9f4,
+                                        0 0 30px #03e9f4,
+                                        0 0 50px #03e9f4;
                         }
                     }
                 }
             }
         }
-    }
-}
+    

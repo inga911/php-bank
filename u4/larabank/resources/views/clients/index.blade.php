@@ -2,6 +2,7 @@
 
 @section('content')
 <h2 class="main-title">Clients List</h2>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">

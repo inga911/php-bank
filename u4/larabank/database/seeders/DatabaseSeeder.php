@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->firstName,
                 'surname' => $faker->lastName,
                 'accNumb' => 'LT 60 10100 ' . rand(00000000000, 99999999999),
-                'personId' => rand(30000000000, 69999999999),
+                'personId' => rand(3,6) . rand(0, 99) . rand(01,12) . rand(1, 31) . rand(01, 31) . rand(0, 999) . rand(0,9),
                 'balance' => '0'
             ]);
         }
