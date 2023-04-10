@@ -54,7 +54,7 @@
                             <input type="hidden" name="edit_type" value="add" value="{{ $client->balance }}">
                             <span>Remaining funds: {{ $client->balance }} eur</span>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-deduct">Confirm</button>
+                        <button type="submit" class="btn btn-deduct">Confirm</button>
                         @csrf
                         @method('put')
                     </form>

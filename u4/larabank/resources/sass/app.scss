@@ -17,7 +17,7 @@
 
 body {
     main{
-        height: 100vh;
+        height: 200vh;
     }
     background: linear-gradient(#57606f, #2f3542); 
 
@@ -73,19 +73,44 @@ a .login-buttons {
 
 .container {
     .row{
-        .col-8{
+        .col-6{
             .card {
-                background-color: #0000000d;
+                background-color: #04fbc51f;
                 box-shadow: 0 15px 25px rgba(0,0,0,6);
                 .card-header{
                     color: #fff;
                     .head-info-list{
                         color: #fff;
                         display: flex; 
-                        width: 53%;
+                        width: 100%;
                         justify-content: space-between;
                         font-weight: 600;
                         letter-spacing: 2px;
+                            select, .sort-btn{
+                                color: #fff;
+                                background: none;
+                                border: 1px solid #fff;
+                                border-radius: 5px;
+                                padding: 3px;
+                                cursor: pointer;
+                                option{
+                                    background-color: #013a32af;
+                                    color: rgb(255, 251, 251);
+                                }
+                            }
+                            .sort-btn {
+                                padding: 1px;
+                                background: none;
+                                border: none;
+                                color: #ffffff;
+                                &:hover {
+                                    box-shadow: 0 0 1px #e6f8fd81,
+                                                0 0 3px #e6f8fd81,
+                                                0 0 6px #e6f8fd81,
+                                                0 0 6px #0396bf81;
+                                        }
+                            }
+                        
                     }
                 }
                 .card-body{
@@ -103,6 +128,7 @@ a .login-buttons {
                                     overflow: hidden;
                                     transition: .5s;
                                     letter-spacing: 4px;
+                                    
                                     &:hover {
                                         background: #03e8f47b;
                                         color: #fff;
@@ -114,8 +140,9 @@ a .login-buttons {
                                     }
                                 }
                                 .btn-show{
+                                    color: #ffffff;
                                     &:hover {
-                                        background: #01799da3;
+                                        background: #19677fa3;
                                         color: #fff;
                                         border-radius: 5px;
                                         box-shadow: 0 0 5px #0396bf81,
@@ -125,8 +152,9 @@ a .login-buttons {
                                     }
                                 }
                                 .btn-del{ 
+                                    color: #ffffff;
                                     &:hover {
-                                    background: #9c02197b;
+                                    background: #991f327b;
                                     color: #fff;
                                     border-radius: 5px;
                                     box-shadow: 0 0 5px #f532507b,

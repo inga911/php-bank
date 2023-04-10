@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-6">
             <div class="card mt-5">
                 <div class="card-header">
                     <h4 class="title">Client information</h4>
@@ -18,9 +18,9 @@
                         <div><b>Balance: </b>{{ $client->balance }} eur</div>
                     </div>
                     <div class="show-buttons">
-                        <a href="{{ route('clients-editminus', $client)}}" class="btn btn-warning btn-deduct">Deduct Funds</a>
-                        <a href="{{ route('clients-editinfo', $client)}}" class="btn btn-info btn-show">Edit Info</a>
-                        <a href="{{ route('clients-editadd', $client)}}" class="btn btn-success btn-add">Add Funds</a>
+                        <a href="{{ route('clients-editminus', $client)}}" class="btn btn-deduct">Deduct Funds</a>
+                        <a href="{{ route('clients-editinfo', $client)}}" class="btn btn-show">Edit Info</a>
+                        <a href="{{ route('clients-editadd', $client)}}" class="btn btn-add">Add Funds</a>
                     </div>
                 </div>
             </div>

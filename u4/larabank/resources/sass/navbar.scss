@@ -24,12 +24,13 @@
             .navbar-nav{
                 .nav-item {
                     .bg-transp {
-                        background-color: #0000000d;
+                        background-color: #2f3542;
+                        // background: linear-gradient(#57606f, #2f3542); 
                         box-shadow: 0 15px 25px rgba(0,0,0,6);
                         .dropdown-item {
                             color: #fff;
                             &:hover {
-                                color: black;
+                                color: #01bea2;
                                 background-color: #0000000d;
                             }
                         }

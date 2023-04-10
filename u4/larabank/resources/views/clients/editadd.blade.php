@@ -21,7 +21,7 @@
                             <input type="hidden" name="balace" value="{{ $client->balance }}">
                             <span>Remaining funds: {{ $client->balance }} eur</span>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-add">Confirm</button>
+                        <button type="submit" class="btn btn-add">Confirm</button>
                     @csrf
                     @method('put')
                     </form>

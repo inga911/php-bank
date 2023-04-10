@@ -27,7 +27,7 @@
                             <label class="form-label">Personal ID number</label>
                             <input type="text" class="form-control" name="personId" value="{{ old('personId', $client->personId) }}" readonly>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-show">Confirm</button>
+                        <button type="submit" class="bt btn-show">Confirm</button>
                     @csrf
                     @method('put')
                     </form>

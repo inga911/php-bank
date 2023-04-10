@@ -2,7 +2,7 @@
     .row {
         .col-4 {
             .card {
-                background-color: #0000000d;
+                background-color: #04fbc51f;
                 box-shadow: 0 15px 25px rgba(0,0,0,6);
                 .card-header{
                     .title{
@@ -27,28 +27,46 @@
                         font-size: 12px;
                     }
                     .btn-deduct{
-                        background-color: rgba(245, 245, 111, 0.612);
-                        border: none;
-                        color: black;
-                        margin-top: 10px;
-                        &:hover{
-                            background-color: rgba(245, 215, 79, 0.869);
+                        letter-spacing: 1.5px;
+                        margin-top: 15px;
+                        color: #ffffff;
+                        &:hover {
+                            background: #a3a50456;
+                            color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 0 5px #e5e54254,
+                                        0 0 15px #e5e54254,
+                                        0 0 30px #e5e54254,
+                                        0 0 30px #e5e54254;
                         }
                     }
                     .btn-add {
-                        background-color:rgba(144, 238, 144, 0.701);
-                        color: black;
-                        border: none;
-                        &:hover{
-                            background-color:rgba(2, 156, 2, 0.794);
+                        letter-spacing: 1.5px;
+                        color: #ffffff;
+                        &:hover {
+                            background: #25822fa3;
+                            color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 0 5px #59bd4e81,
+                                        0 0 15px #59bd4e81,
+                                        0 0 30px #59bd4e81,
+                                        0 0 30px #59bd4e81;
                         }
                     }
                     .btn-show{
-                        background-color: rgba(123, 184, 248, 0.611);
+                        background: none;
                         border: none;
-                        color: #000000;
-                        &:hover{
-                            background-color: rgba(15, 124, 240, 0.644);
+                        color: #ffffff;
+                        letter-spacing: 1.5px;
+                        padding: 5px;
+                        &:hover {
+                            background: #19677fa3;
+                            color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 0 5px #e6f8fd81,
+                                        0 0 15px #e6f8fd81,
+                                        0 0 30px #e6f8fd81,
+                                        0 0 30px #0396bf81;
                         }
                     }
                 }

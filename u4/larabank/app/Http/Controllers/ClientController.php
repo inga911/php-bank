@@ -13,12 +13,17 @@ class ClientController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::orderBy('surname')->get();
-        return view('clients.index', [
-            'clients' => $clients
-        ]);
+        // Get the selected sorting option from the request
+    $sortBy = $request->input('sort_by', 'surname');
+
+    // Query the clients table and order the results by the selected sorting option
+    $clients = Client::orderBy($sortBy)->get();
+
+    return view('clients.index', [
+        'clients' => $clients
+    ]);
     }
     
     public function home()
@@ -63,6 +68,7 @@ class ClientController extends Controller
             ->with('ok', 'New client was created');
         
     }
+
 
     public function show(Client $client)
     {
