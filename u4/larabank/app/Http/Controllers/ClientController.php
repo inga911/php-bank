@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
+// use Illuminate\Support\Facades\View;
 
 class ClientController extends Controller
 {
@@ -13,27 +13,53 @@ class ClientController extends Controller
     {
         $this->middleware('auth');
 
-        $totalClients = Client::count();
-         View::share('totalClients', $totalClients);
+        // $totalClients = Client::count();
+        //  View::share('totalClients', $totalClients);
     }
 
     public function index(Request $request)
     {
-        $sortBy = $request->input('sort_by', 'surname');
-        $clients = Client::orderBy($sortBy)->get();
-        $totalClients = Client::count();
+        $sort = $request->sort ?? '';
+        // $filter = $request->filter ?? '';
+
+        $clients = Client::query();
+        $per = (int) ($request->per ?? 10);
+        
+        // $clients = match($filter){
+        //     'default'=> 
+        // }
+        // if ($filter === 'balance') {
+        //     $clients = $clients->where('balance', '>', 0);
+        // } elseif ($filter === 'no-balance') {
+        //     $clients = $clients->where('balance', '=', 0);
+        // }
+
+        $clients = match ($sort) {
+            'name_asc' => Client::orderBy('name'),
+            'name_desc' => Client::orderBy('name', 'desc'),
+            'surname_asc' => Client::orderBy('surname'),
+            'surname_desc' => Client::orderBy('surname', 'desc'),
+            default => $clients
+        };
+
+        $clients = $clients->paginate($per)->withQueryString();
+        // $clients = $clients->where('balance', '>', 0);
+        // $clients = $clients->where('balance', '=', 0);
+        
+        // $clients = Client::orderByDesc('name')->get(); ---> duomenu bazes sortinimas
+        // $clients = Client::all()->sortBy('name'); ---> php sort
         
         return view('clients.index', [
             'clients' => $clients,
-            'home' => $totalClients
+            'sortSelect' => Client::SORT,
+            'sort' => $sort,
+            // 'filterSelect' => Client::FILTER,
+            // 'filter' => $filter,
+            'perSelect' => Client::PER,
+            'per' => $per,
         ]);
     }
 
-    public function home()
-    {
-        $totalClients = Client::count();
-        return view('home', compact('totalClients'));
-    }
 
     public function create(Client $client)
     {
@@ -47,7 +73,7 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'surname' => 'required|min:3',
-            'personId' => 'required|numeric|min_digits:11|max_digits:11',
+            'personId' => 'required|regex:/^(3[1-9]|4[0-9]|5[1-6]|6[1-6])\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}[0-9X]$|unique:clients,personId',
         ]);
 
         if ($validator->fails()) {
@@ -130,7 +156,7 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|min:3',
             'surname' => 'nullable|min:3',
-            'personId' => 'nullable|numeric|min_digits:11|max_digits:11',
+            'personId' => 'required|regex:/^(3[1-9]|4[0-9]|5[1-6]|6[1-6])\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}[0-9X]$|unique:clients,personId',
             'accNumb' => 'nullable|min:22',
         ]);
 
