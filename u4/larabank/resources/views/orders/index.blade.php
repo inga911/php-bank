@@ -15,14 +15,15 @@
                     <table class="table">
                         <tbody>
                             @forelse($orders as $order)
-                                <tr class="list">
-                                    {{-- <div class="client-order"></div> --}}
+                            <tr class="list active">
+                                    {{-- <div class="client-order"> --}}
                                         <td><a href="{{route('orders-show', $order)}}" class="client">{{ $order->orderClient->name }} {{ $order->orderClient->surname }}</a></td>
                                         <td>{{ $order->title }}</td>
                                         <td>{{ $order->price }}</td>
                                     {{-- </div> --}}
                                     <td class="list-btn">
-                                        <a href="{{ route('orders-show', $order) }}" class="btn btn-show">Show</a>
+                                        <a href="{{ route('orders-edit', $order) }}" class="btn btn-show">Edit</a>
+                                        {{-- <a href="{{ route('orders-show', $order) }}" class="btn btn-show">Show</a> --}}
                                         <form action="{{ route('orders-delete', $order) }}" method="post" style="display: inline-block;">
                                             <button type="submit" class="btn btn-del">Delete</button>
                                             @csrf

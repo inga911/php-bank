@@ -44,8 +44,8 @@ Route::prefix('orders')->name('orders-')->group(function() {
     Route::get('/create', [OrderController::class, 'create'])->name('create');
     Route::post('/create', [OrderController::class, 'store'])->name('store');
     Route::get('/{order}', [OrderController::class, 'show'])->name('show');
-    // Route::get('/editadd/{order}', [OrderController::class, 'editadd'])->name('editadd');
-    // Route::put('/editadd/{order}', [OrderController::class, 'updateadd'])->name('updateadd');
+    Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('edit');
+    Route::put('/edit/{order}', [OrderController::class, 'update'])->name('update');
     // Route::get('/editminus/{order}', [OrderController::class, 'editminus'])->name('editminus');
     // Route::put('/editminus/{order}', [OrderController::class, 'updateminus'])->name('updateminus');
     // Route::get('/editinfo/{order}', [OrderController::class, 'editinfo'])->name('editinfo');
