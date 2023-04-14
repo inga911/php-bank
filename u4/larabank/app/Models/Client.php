@@ -27,4 +27,9 @@ class Client extends Model
         '33' => '33 per page',
         '3' => 'tiny view',
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

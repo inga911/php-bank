@@ -43,14 +43,36 @@
                                 <a class="dropdown-item" href="{{ route('clients-create') }}">
                                     New client
                                 </a>
-                                <a class="dropdown-item" href="{{ route('home') }}">
+                                {{-- <a class="dropdown-item" href="{{ route('home') }}">
                                     Home
-                                </a>
+                                </a> --}}
                             </div>
 
                         </li>
                     </ul>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Orders
+                            </a>
 
+                            <div class="bg-transp dropdown-menu dropdown-menu-black dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('orders-index') }}">
+                                    Order list
+                                </a>
+                                <a class="dropdown-item" href="{{ route('orders-create') }}">
+                                    New order
+                                </a>
+                                {{-- <a class="dropdown-item" href="{{ route('home') }}">
+                                    Home
+                                </a> --}}
+                            </div>
+
+                        </li>
+                    </ul>
+                    <a class="dropdown-item" href="{{ route('home') }}">
+                        Home
+                    </a>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 // use Illuminate\Support\Facades\View;
 
 class ClientController extends Controller
@@ -73,7 +74,7 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'surname' => 'required|min:3',
-            'personId' => 'required|regex:/^(3[1-9]|4[0-9]|5[1-6]|6[1-6])\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}[0-9X]$|unique:clients,personId',
+            'personId' => 'nullable|numeric|min_digits:11|max_digits:11',
         ]);
 
         if ($validator->fails()) {
@@ -103,6 +104,7 @@ class ClientController extends Controller
             'client' => $client
         ]);
     }
+    
 
     public function editadd(Client $client)
     {

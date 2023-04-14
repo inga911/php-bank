@@ -1,116 +1,56 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Work+Sans&display=swap');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
-
-//SASS
-@import 'show.scss';
-@import 'editFunds.scss';
-@import 'home.scss';
-@import 'login.scss';
-@import 'register.scss';
-@import 'navbar.scss';
-@import 'order.scss';
-
-body {
-    main{
-        height: 200vh;
-    }
-    background: linear-gradient(#57606f, #2f3542); 
-
-}
-
-
-
-
-
-.main-title{
-    margin-top: 20px;
-    text-align: center;
-    margin-left: -10px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 40px;
-    background: -webkit-linear-gradient(#03e6e2, #01bea2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-a .login-buttons {
-    text-align: center;
-    .button-link {
-        .login-btn{
-            border: none;
-            background: none;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            padding: 10px 20px;
-            color: #03e9f4;
-            font-size: 16px;
-            text-decoration: none;
-            text-transform: uppercase;
-            overflow: hidden;
-            transition: .5s;
-            margin-top: 40px;
-            letter-spacing: 4px;
-            margin-bottom: 5px;
-            &:hover {
-                background: #03e8f47b;
-                color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 0 5px #03e9f4,
-                            0 0 15px #03e9f4,
-                            0 0 30px #03e9f4,
-                            0 0 50px #03e9f4;
-            }
-        }
-    }
-
-}
-
 .container {
     .row{
-        .col-6{
+        .col-10{
             .card {
                 background-color: #04fbc51f;
                 box-shadow: 0 15px 25px rgba(0,0,0,6);
-                .card-header{
-                    color: #fff;
+                .list-btn{
+                    .btn-show{
+                        margin: 15px;
+                        color: #ffffff;
+                        &:hover {
+                            background: #19677fa3;
+                            color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 0 5px #e6f8fd81,
+                                        0 0 15px #e6f8fd81,
+                                        0 0 30px #e6f8fd81,
+                                        0 0 30px #0396bf81;
+                        }
+                    }
+                }
                     .head-info-list{
+                        margin-left: -15px;
                         color: #fff;
                         display: flex; 
-                        width: 100%;
-                        justify-content: space-between;
+                        // width: 75%;
+                        justify-content: space-evenly;
                         font-weight: 600;
                         letter-spacing: 2px;
-                            select, .sort-btn{
-                                color: #fff;
-                                background: none;
-                                border: 1px solid #fff;
-                                border-radius: 5px;
-                                padding: 3px;
-                                cursor: pointer;
-                                option{
-                                    background-color: #013a32af;
-                                    color: rgb(255, 251, 251);
-                                }
-                            }
-                            .sort-btn {
-                                padding: 1px;
-                                background: none;
-                                border: none;
-                                color: #ffffff;
-                                &:hover {
-                                    box-shadow: 0 0 1px #e6f8fd81,
-                                                0 0 3px #e6f8fd81,
-                                                0 0 6px #e6f8fd81,
-                                                0 0 6px #0396bf81;
-                                        }
-                            }
+                            // select, .sort-btn{
+                            //     color: #fff;
+                            //     background: none;
+                            //     border: 1px solid #fff;
+                            //     border-radius: 5px;
+                            //     padding: 3px;
+                            //     cursor: pointer;
+                            //     option{
+                            //         background-color: #013a32af;
+                            //         color: rgb(255, 251, 251);
+                            //     }
+                            // }
+                            // .sort-btn {
+                            //     padding: 1px;
+                            //     background: none;
+                            //     border: none;
+                            //     color: #ffffff;
+                            //     &:hover {
+                            //         box-shadow: 0 0 1px #e6f8fd81,
+                            //                     0 0 3px #e6f8fd81,
+                            //                     0 0 6px #e6f8fd81,
+                            //                     0 0 6px #0396bf81;
+                            //             }
+                            // }
                         
                     }
                 }
@@ -122,6 +62,13 @@ a .login-buttons {
                         .list{
                             color: #fff;
                             padding: 5px;
+                            .client{
+                                text-decoration: none;
+                                color: #03e9f4;
+                                &:hover{
+                                    color: #c6f9fc;
+                                }
+                            }
                             .list-btn{
                                 .btn{
                                     border: none;
@@ -197,5 +144,5 @@ a .login-buttons {
                     }
                 }
             }
-        }
+        
     
