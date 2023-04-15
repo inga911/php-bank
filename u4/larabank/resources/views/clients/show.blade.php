@@ -33,25 +33,31 @@
             <div class="card mt-5">
                 <div class="list-btn">
                     <a href="{{route('orders-create', ['id' => $client])}}" class="btn btn-show">+ New order</a>
-                </div>
-                    <div class="head-info-list">
-                        <div>Client</div>
-                        <div>The item</div>
-                        <div>Price</div>
-                        
+                    {{-- <a href="{{ route('orders-edit', $client->order) }}" class="btn btn-show">Edit order</a> --}}
+                    <div class="buttons">
+                        <form action="" method="post">
+                            <button type="submit" class="btn btn-del">Delete</button>
+                        @csrf
+                        @method('delete')
+                        </form>
                     </div>
+                </div>
+                <div class="head-info-list">
+                    <div>Client</div>
+                    <div>The item</div>
+                    <div>Price</div>
+                </div>
                 <div class="card-body">
                     <table class="table">
                         <tbody>
                             @forelse($client->order as $order)
-                                <tr class="list">
-                                    {{-- <div class="client-order"></div> --}}
-                                        <td><a href="{{route('orders-show', $order)}}" class="client">{{ $order->orderClient->name }} {{ $order->orderClient->surname }}</a></td>
-                                        <td>{{ $order->title }}</td>
-                                        <td>{{ $order->price }}</td>
-                                    {{-- </div> --}}
-                                  
-                                </tr>
+                            <tr class="list">
+                                <td>
+                                    <a href="{{route('orders-show', $order)}}" class="client">{{ $order->orderClient->name }} {{ $order->orderClient->surname }}</a>
+                                </td>
+                                <td>{{ $order->title }}</td>
+                                <td>{{ $order->price }}</td>
+                            </tr>
                             @empty
                                 <div class=" mt-4">
                                     <div class="order-line">No orders yet</div>

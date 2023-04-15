@@ -21,11 +21,7 @@ body {
         height: 200vh;
     }
     background: linear-gradient(#57606f, #2f3542); 
-
 }
-
-
-
 
 
 .main-title{
@@ -39,6 +35,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 a .login-buttons {
     text-align: center;
     .button-link {
@@ -69,24 +67,26 @@ a .login-buttons {
             }
         }
     }
-
 }
 
 .container {
     .row{
-        .col-6{
+        .col-10{
             .card {
-                background-color: #04fbc51f;
-                box-shadow: 0 15px 25px rgba(0,0,0,6);
-                .card-header{
-                    color: #fff;
-                    .head-info-list{
+                .head-info-list{
+                    width: 73%;
+                    justify-content: space-between;
+                }
+                .list-btn {
+                    .card-header{
                         color: #fff;
-                        display: flex; 
-                        width: 100%;
-                        justify-content: space-between;
-                        font-weight: 600;
-                        letter-spacing: 2px;
+                        .head-info-list{
+                            color: #fff;
+                            display: flex; 
+                            width: 100%;
+                            justify-content: space-between;
+                            font-weight: 600;
+                            letter-spacing: 2px;
                             select, .sort-btn{
                                 color: #fff;
                                 background: none;
@@ -112,8 +112,8 @@ a .login-buttons {
                                         }
                             }
                         
+                        }
                     }
-                }
                 .card-body{
                     .form-label {
                         color: #fff;
@@ -123,6 +123,9 @@ a .login-buttons {
                             color: #fff;
                             padding: 5px;
                             .list-btn{
+                                a {
+                                    margin: 0;
+                                }
                                 .btn{
                                     border: none;
                                     background: none;
@@ -166,9 +169,9 @@ a .login-buttons {
                             }
                         }
                         
-                            }
-                        }
                     }
+                }
+                
                     .create-btn{
                         border: none;
                         background: none;
@@ -198,8 +201,54 @@ a .login-buttons {
                 }
             }
         }
-    
+    }   
+}
 .list.active{
     background-color: #b2f6ec5f;
-    // margin: 3px;
+}
+
+.modal {
+    display: block;
+    background-color: #0128226d;
+}
+
+
+.container {
+    .row{
+        .col-10{
+            .card {
+                .per-page{
+                    margin: 5px;
+                    .form-label{
+                        color: #fff;
+                        margin-right: 5px;
+                    } 
+                    .sort-btn, .col-3{
+                        color: #fff;
+                        background: none;
+                        border: 1px solid #fff;
+                        border-radius: 5px;
+                        padding: 3px;
+                        cursor: pointer;
+                        option{
+                            background-color: #013a32af;
+                            color: rgb(255, 251, 251);
+                        }
+                    }
+                    .sort-btn {
+                        padding: 1px;
+                        background: none;
+                        border: none;
+                        color: #ffffff;
+                        &:hover {
+                            box-shadow: 0 0 1px #e6f8fd81,
+                                        0 0 3px #e6f8fd81,
+                                        0 0 6px #e6f8fd81,
+                                        0 0 6px #0396bf81;
+                                }
+                    }
+                }
+            }   
+        }
+    }
 }

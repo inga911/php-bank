@@ -49,12 +49,12 @@ class OrderController extends Controller
     ]);
 }
 
-    public function edit(Order $order)
-    {
-        return view('orders.edit', [
-            'order' => $order,
-        ]);
-    }
+public function edit(Order $order)
+{
+    return view('orders.edit', [
+        'order' => $order,
+    ]);
+}
 
     public function update(Request $request, Order $order)
     {
@@ -70,6 +70,16 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
-        //
+        // if ($order->client->order->count()) {
+        //     return redirect()
+        //     ->back()
+        //     ->with('info', 'Has orders');
+        // }
+        
+        $order->delete();
+            return redirect()
+            ->route('orders-index')
+            ->with('info', 'No more order');
+        
     }
 }

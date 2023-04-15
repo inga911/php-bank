@@ -43,9 +43,6 @@
                                 <a class="dropdown-item" href="{{ route('clients-create') }}">
                                     New client
                                 </a>
-                                {{-- <a class="dropdown-item" href="{{ route('home') }}">
-                                    Home
-                                </a> --}}
                             </div>
 
                         </li>
@@ -63,14 +60,11 @@
                                 <a class="dropdown-item" href="{{ route('orders-create') }}">
                                     New order
                                 </a>
-                                {{-- <a class="dropdown-item" href="{{ route('home') }}">
-                                    Home
-                                </a> --}}
                             </div>
 
                         </li>
                     </ul>
-                    <a class="dropdown-item" href="{{ route('home') }}">
+                    <a class="nav-link dropdown-item" href="{{ route('home') }}">
                         Home
                     </a>
                     <!-- Right Side Of Navbar -->
@@ -113,6 +107,7 @@
         </nav>
         @include('layouts.errors')
         @include('layouts.messages')
+        @include('layouts.delete')
         <main>
             @yield('content')
         </main>

@@ -25,7 +25,7 @@
                                 </select>
                                 <div class="form-text">Orders client</div>
                             </div>
-                            <button type="submit" class="create-btn">Add</button>
+                            <button type="submit" class="create-btn">Edit</button>
                             @csrf
                             @method('put')
                         </form>

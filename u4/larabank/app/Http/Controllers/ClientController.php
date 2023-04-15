@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -13,27 +14,14 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        // $totalClients = Client::count();
-        //  View::share('totalClients', $totalClients);
     }
 
     public function index(Request $request)
     {
         $sort = $request->sort ?? '';
-        // $filter = $request->filter ?? '';
 
         $clients = Client::query();
         $per = (int) ($request->per ?? 10);
-        
-        // $clients = match($filter){
-        //     'default'=> 
-        // }
-        // if ($filter === 'balance') {
-        //     $clients = $clients->where('balance', '>', 0);
-        // } elseif ($filter === 'no-balance') {
-        //     $clients = $clients->where('balance', '=', 0);
-        // }
 
         $clients = match ($sort) {
             'name_asc' => Client::orderBy('name'),
@@ -44,9 +32,7 @@ class ClientController extends Controller
         };
 
         $clients = $clients->paginate($per)->withQueryString();
-        // $clients = $clients->where('balance', '>', 0);
-        // $clients = $clients->where('balance', '=', 0);
-        
+ 
         // $clients = Client::orderByDesc('name')->get(); ---> duomenu bazes sortinimas
         // $clients = Client::all()->sortBy('name'); ---> php sort
         
@@ -54,8 +40,6 @@ class ClientController extends Controller
             'clients' => $clients,
             'sortSelect' => Client::SORT,
             'sort' => $sort,
-            // 'filterSelect' => Client::FILTER,
-            // 'filter' => $filter,
             'perSelect' => Client::PER,
             'per' => $per,
         ]);
@@ -126,6 +110,25 @@ class ClientController extends Controller
             'client' => $client
         ]);
     }
+    public function edit(Order $order)
+    {
+        return view('orders.edit', [
+            'order' => $order,
+        ]);
+    }
+
+    public function update(Request $request, Order $order)
+    {
+        $order->update([
+            'title'=> $request->title,
+            'price'=> $request->price
+        ]);
+        return redirect()
+        ->route('orders-index')
+        ->with('light-up', $order->id)
+        ;
+    }
+
 
     public function updateadd(Request $request, Client $client)
     {
@@ -180,17 +183,27 @@ class ClientController extends Controller
     }
 
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
-        if ($client->balance > 0) {
-            return redirect()
-                ->route('clients-index')
-                ->with('error', 'Cannot delete client with balance.');
-        }
+        // if ($client->balance > 0) {
+        //     return redirect()
+        //         ->route('clients-index')
+        //         ->with('error', 'Cannot delete client with balance.');
+        // }
 
+        if (!$request->confirm && $client->order->count()) {
+            return redirect()
+            ->back()
+            ->with('delete-modal', [
+                'This client has orders. Do you really want to delete?',
+                $client->id
+            ]);
+        }
+        
+        
         $client->delete();
         return redirect()
-            ->route('clients-index')
+        ->route('clients-index')
             ->with('info', 'The client was deleted');
     }
 }

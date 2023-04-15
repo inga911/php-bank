@@ -23,34 +23,34 @@
                         margin-left: -15px;
                         color: #fff;
                         display: flex; 
-                        // width: 75%;
+                        width: 50%;
                         justify-content: space-evenly;
                         font-weight: 600;
                         letter-spacing: 2px;
-                            // select, .sort-btn{
-                            //     color: #fff;
-                            //     background: none;
-                            //     border: 1px solid #fff;
-                            //     border-radius: 5px;
-                            //     padding: 3px;
-                            //     cursor: pointer;
-                            //     option{
-                            //         background-color: #013a32af;
-                            //         color: rgb(255, 251, 251);
-                            //     }
-                            // }
-                            // .sort-btn {
-                            //     padding: 1px;
-                            //     background: none;
-                            //     border: none;
-                            //     color: #ffffff;
-                            //     &:hover {
-                            //         box-shadow: 0 0 1px #e6f8fd81,
-                            //                     0 0 3px #e6f8fd81,
-                            //                     0 0 6px #e6f8fd81,
-                            //                     0 0 6px #0396bf81;
-                            //             }
-                            // }
+                            select, .sort-btn{
+                                color: #fff;
+                                background: none;
+                                border: 1px solid #fff;
+                                border-radius: 5px;
+                                padding: 3px;
+                                cursor: pointer;
+                                option{
+                                    background-color: #013a32af;
+                                    color: rgb(255, 251, 251);
+                                }
+                            }
+                            .sort-btn {
+                                padding: 1px;
+                                background: none;
+                                border: none;
+                                color: #ffffff;
+                                &:hover {
+                                    box-shadow: 0 0 1px #e6f8fd81,
+                                                0 0 3px #e6f8fd81,
+                                                0 0 6px #e6f8fd81,
+                                                0 0 6px #0396bf81;
+                                        }
+                            }
                         
                     }
                 }
@@ -100,6 +100,7 @@
                                 }
                                 .btn-del{ 
                                     color: #ffffff;
+                                    margin-top: 15px;
                                     &:hover {
                                     background: #991f327b;
                                     color: #fff;
