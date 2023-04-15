@@ -4,62 +4,92 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $clients = Client::all()->sortBy('surname');
+
+        return view('clients.index', [
+            'clients' => $clients
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        // $accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
+        // $client = $client;
+        // return view('clients.create', ['accNumb' => $accNumb, 'client' => $client]);
+        return view('clients.create', [
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreClientRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
+            'personId' => 'nullable|numeric|min_digits:11|max_digits:11',
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()
+                ->back()
+                ->withErrors($validator);
+        }
+        $client = new Client;
+        $client->name = $request->name;
+        $client->surname = $request->surname;
+        $client->persId = $request->persId;
+        $client->accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
+        $client->balance = '0';
+        $client->save();
+        return redirect()
+            ->route('clients-index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Client $client)
     {
-        //
+        return view('clients.show', [
+            'client' => $client
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Client $client)
     {
-        //
+        return view('clients.edit', [
+            'client' => $client
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateClientRequest $request, Client $client)
+
+    public function update(Request $request, Client $client)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'nullable|min:3',
+            'surname' => 'nullable|min:3',
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()
+                ->back()
+                ->withErrors($validator);
+        }
+
+        $client->name = $request->name;
+        $client->surname = $request->surname;
+        $client->save();
+        return redirect()
+            ->route('clients-index')
+            ->with('ok', 'The client was updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Client $client)
     {
         //

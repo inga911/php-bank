@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('surname', 100);
+            $table->string('persId', 11)->unique();
+            $table->string('accNumb', 50);
+            $table->float('balance', 8, 2)->default(0);
             $table->timestamps();
         });
     }
