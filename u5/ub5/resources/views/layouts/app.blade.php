@@ -43,10 +43,10 @@
                                 <a class="dropdown-item" href="{{route('clients-create')}}">
                                     New client
                                 </a>
-                                <a class="dropdown-item" href="">
+                                {{-- <a class="dropdown-item" href="{{ route('clients-edit') }}">
                                     Client edit
-                                </a>
-                                <a class="dropdown-item" href="">
+                                </a> --}}
+                                <a class="dropdown-item" href="{{route('account-create')}}">
                                     Generate new account number
                                 </a>
                             </div>

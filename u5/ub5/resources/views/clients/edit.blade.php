@@ -19,14 +19,6 @@
                             <label class="form-label">Surname</label>
                             <input type="text" class="form-control" name="surname" value="{{ old('surname', $client->surname) }}">
                         </div>
-                        {{-- <div class="mb-3">
-                            <label class="form-label">Account number</label>
-                            <input type="text" class="form-control" name="accNumb" value="{{ old('accNumb', $client->accNumb) }}" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Personal ID number</label>
-                            <input type="text" class="form-control" name="persId" value="{{ old('persId', $client->personId) }}" readonly>
-                        </div> --}}
                         <button type="submit" class="bt btn-show">Confirm</button>
                     @csrf
                     @method('put')

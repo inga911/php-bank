@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $clients = Client::all()->sortBy('surname');
@@ -21,9 +26,6 @@ class ClientController extends Controller
 
     public function create()
     {
-        // $accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
-        // $client = $client;
-        // return view('clients.create', ['accNumb' => $accNumb, 'client' => $client]);
         return view('clients.create', [
         ]);
     }
@@ -46,15 +48,16 @@ class ClientController extends Controller
         $client->name = $request->name;
         $client->surname = $request->surname;
         $client->persId = $request->persId;
-        $client->accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
-        $client->balance = '0';
         $client->save();
         return redirect()
             ->route('clients-index');
     }
 
+   
+
     public function show(Client $client)
     {
+       
         return view('clients.show', [
             'client' => $client
         ]);

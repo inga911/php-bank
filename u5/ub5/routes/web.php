@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AccountController;
 
 
 
@@ -28,13 +29,14 @@ Route::prefix('clients')->name('clients-')->group(function() {
     Route::get('/{client}', [ClientController::class, 'show'])->name('show');
     Route::get('/edit/{client}', [ClientController::class, 'edit'])->name('edit');
     Route::put('/edit/{client}', [ClientController::class, 'update'])->name('update');
-    // Route::get('/editadd/{client}', [ClientController::class, 'editadd'])->name('editadd');
-    // Route::put('/editadd/{client}', [ClientController::class, 'updateadd'])->name('updateadd');
-    // Route::get('/editminus/{client}', [ClientController::class, 'editminus'])->name('editminus');
-    // Route::put('/editminus/{client}', [ClientController::class, 'updateminus'])->name('updateminus');
-    // Route::get('/editinfo/{client}', [ClientController::class, 'editinfo'])->name('editinfo');
-    // Route::put('/editinfo/{client}', [ClientController::class, 'updateinfo'])->name('updateinfo');
-    // Route::delete('/delete/{client}', [ClientController::class, 'destroy'])->name('delete');
+
+});
+Route::prefix('account')->name('account-')->group(function() {
+    Route::get('/home', [ClientController::class, 'home'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/create', [AccountController::class, 'create'])->name('create');
+    Route::post('/create', [AccountController::class, 'store'])->name('store');
+    Route::get('/{client}', [AccountController::class, 'show'])->name('show');
 
 });
 

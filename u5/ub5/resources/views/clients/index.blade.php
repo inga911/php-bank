@@ -20,11 +20,12 @@
                         </thead>
                         <tbody>
                             @forelse($clients as $client)
-                                <tr>
+                            
+                            <tr>
                                     <td>{{ $client->surname }}</td>
                                     <td>{{ $client->name }}</td>
                                     <td>Total balance: x eur</td>
-                                    <td><a href="" class="">Show acc</a></td>
+                                    <td><a href="{{ route('account-show', $client) }}" class="">Show acc</a></td>
                                     <td><a href="{{ route('clients-show', $client) }}" class="">Show info</a></td>
                                     <td><a href="{{ route('clients-edit', $client) }}" class="">Edit</a></td>
                                 </tr>
