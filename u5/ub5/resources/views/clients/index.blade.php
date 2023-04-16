@@ -4,7 +4,7 @@
 <h2 class="main-title">Clients List</h2>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-11">
             <div class="card mt-5">
                 <table class="table">
                     <table class="table table-hover">

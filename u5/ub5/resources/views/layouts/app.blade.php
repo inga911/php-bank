@@ -49,6 +49,12 @@
                                 <a class="dropdown-item" href="{{route('account-create')}}">
                                     Generate new account number
                                 </a>
+                                <a class="dropdown-item" href="{{ route('account-add', $client) }}">
+                                    Add funds
+                                </a>
+                                <a class="dropdown-item" href="{{ route('account-deduct', $client) }}">
+                                    Deduct funds
+                                </a>
                             </div>
 
                         </li>

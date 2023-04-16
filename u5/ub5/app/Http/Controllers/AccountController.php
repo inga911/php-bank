@@ -36,7 +36,7 @@ class AccountController extends Controller
                     ->withInput();
         }
 
-        $accountNumber = 'LT1010060' . rand(10000000, 99999999);
+        $accountNumber = 'LT'.  rand(10,99) .  rand(10,99) . rand(100,999)  . rand(10000000000, 99999999999);
 
         $account = new Account;
         $account->client_id = $request->input('client_id');
@@ -57,13 +57,29 @@ class AccountController extends Controller
     }
 
 
-    public function edit(Client $client)
+    public function add(Client $client)
     {
-        //
+        $accounts = $client->accounts; 
+        return view('account.add', compact('client', 'accounts'));
     }
 
 
-    public function update(Request $request, Client $client)
+    public function updateAdd(Request $request, Client $client,  Account $account)
+    {
+        $new_balance_add = $account->balance + $request->balance;
+        $account->balance = $new_balance_add;
+        $client->save();
+        return redirect()
+        ->back();
+    }
+    public function deduct(Client $client)
+    {
+        $accounts = $client->accounts; 
+        return view('account.deduct', compact('client', 'accounts'));
+    }
+
+
+    public function updateDeduct(Request $request, Client $client)
     {
         //
     }
