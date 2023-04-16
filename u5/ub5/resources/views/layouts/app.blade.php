@@ -55,6 +55,9 @@
                                 <a class="dropdown-item" href="{{ route('account-deduct', $client) }}">
                                     Deduct funds
                                 </a>
+                                <a class="dropdown-item" href="{{ route('account-transfer', $client) }}">
+                                    Transfer money
+                                </a>
                             </div>
 
                         </li>

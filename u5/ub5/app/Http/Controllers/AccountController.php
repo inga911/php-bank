@@ -53,7 +53,10 @@ class AccountController extends Controller
     public function show(Account $accounts, Client $client)
     {
         $accounts = $client->accounts; 
-        return view('account.show', compact('client', 'accounts'));
+        return view('account.show', [
+            'client' => $client,
+            'accounts' => $accounts
+        ]);
     }
 
 
@@ -83,6 +86,13 @@ class AccountController extends Controller
     {
         //
     }
+    public function transfer(Client $client)
+    {
+        $clients = Client::all();
+        $accounts = $client->accounts; 
+        return view('account.transfer', compact('client', 'accounts', 'clients'));
+    }
+
 
     public function destroy(Client $client)
     {

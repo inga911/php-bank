@@ -15,7 +15,8 @@
                             @if ($accounts->count() > 0)
                                 <ul>
                                     @foreach ($accounts as $account)
-                                        <li>{{ $account->account }} saskaitoje yra: xxx EUR</li>
+                                        <li>{{ $account->account }} saskaitoje yra: {{ $account->balance }} EUR</li>
+                                       <a href="{{ route('account-add', $client) }}"> add funds</a>
                                     @endforeach
                                 </ul>
                             @else
