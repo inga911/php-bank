@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Http\Controllers\Controller;
+use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -15,14 +16,16 @@ class ClientController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $clients = Client::all()->sortBy('surname');
-
-        return view('clients.index', [
-            'clients' => $clients
-        ]);
-    }
+    public function index(Request $request)
+{
+    $per = (int) ($request->per ?? 10);
+    $clients = Client::query()->orderBy('surname')->paginate($per)->withQueryString();
+    return view('clients.index', [
+        'clients' => $clients,
+        'perSelect' => Client::PER,
+        'per' => $per,
+    ]);
+}
 
     public function create()
     {
