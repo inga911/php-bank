@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h4 class="title">Client information</h4>
+                    <h4 class="title">Town information</h4>
                 </div>
                 <div class="info-table">
                     <div class="card-body-show">
@@ -16,12 +16,11 @@
                         <div><b>Account number: </b>{{ $client->accNumb }}</div>
                         <div><b>Personal ID: </b>{{ $client->personId }}</div>
                         <div><b>Balance: </b>{{ $client->balance }} eur</div>
-                        {{-- <div><b>City: </b> {{$client->client->town}}</div> --}}
                     </div>
                     <div class="show-buttons">
-                        <a href="{{ route('clients-editminus', $client)}}" class="btn btn-deduct">Deduct Funds</a>
-                        <a href="{{ route('clients-editinfo', $client)}}" class="btn btn-show">Edit Info</a>
-                        <a href="{{ route('clients-editadd', $client)}}" class="btn btn-add">Add Funds</a>
+                        <a href="{{ route('towns-editminus', $client)}}" class="btn btn-deduct">Deduct Funds</a>
+                        <a href="{{ route('towns-editinfo', $client)}}" class="btn btn-show">Edit Info</a>
+                        <a href="{{ route('towns-editadd', $client)}}" class="btn btn-add">Add Funds</a>
                     </div>
                 </div>
             </div>

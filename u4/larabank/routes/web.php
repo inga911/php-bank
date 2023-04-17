@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,19 @@ Route::prefix('orders')->name('orders-')->group(function() {
     Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('edit');
     Route::put('/edit/{order}', [OrderController::class, 'update'])->name('update');
     Route::delete('/delete/{order}', [OrderController::class, 'destroy'])->name('delete');
+
+});
+
+Route::prefix('towns')->name('towns-')->group(function() {
+    Route::get('/', [TownController::class, 'index'])->name('index');
+    Route::get('/home', [TownController::class, 'home'])->name('home');
+    Route::get('/home', [TownController::class, 'index'])->name('home');
+    Route::get('/create', [TownController::class, 'create'])->name('create');
+    Route::post('/create', [TownController::class, 'store'])->name('store');
+    Route::get('/{town}', [TownController::class, 'show'])->name('show');
+    Route::get('/edit/{town}', [TownController::class, 'edit'])->name('edit');
+    Route::put('/edit/{town}', [TownController::class, 'update'])->name('update');
+    Route::delete('/delete/{town}', [TownController::class, 'destroy'])->name('delete');
 
 });
 

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('personId', 11);
             $table->string('accNumb', 50);
             $table->float('balance', 8, 2)->default(0);
-            $table->timestamps();
+            $table->unsignedBigInteger('town_id');
+            $table->foreign('town_id')->references('id')->on('towns');
+
         });
     }
 

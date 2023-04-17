@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Order;
+use App\Models\Town;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -48,9 +49,14 @@ class ClientController extends Controller
 
     public function create(Client $client)
     {
+        $towns = Town::all();
         $accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
         $client = $client;
-        return view('clients.create', ['accNumb' => $accNumb, 'client' => $client]);
+        return view('clients.create', [
+            'accNumb' => $accNumb, 
+            'client' => $client, 
+            'towns' => $towns
+        ]);
     }
 
     public function store(Request $request)
@@ -74,6 +80,7 @@ class ClientController extends Controller
         $client->personId = $request->personId;
         $client->accNumb = 'LT 60 10100 ' . rand(10000000000, 99999999999);
         $client->balance = '0';
+        $client->town_id = $request->town_id;
         $client->save();
         return redirect()
             ->route('clients-index')
@@ -82,10 +89,12 @@ class ClientController extends Controller
     }
 
 
-    public function show(Client $client)
+    public function show(Client $client, Town $towns)
     {
+        $towns = Town::all();
         return view('clients.show', [
-            'client' => $client
+            'client' => $client,
+            'towns' => $towns
         ]);
     }
     
@@ -99,8 +108,10 @@ class ClientController extends Controller
 
     public function editinfo(Client $client)
     {
+        $towns = Town::all();
         return view('clients.editinfo', [
-            'client' => $client
+            'client' => $client,
+            'towns' => $towns
         ]);
     }
 
@@ -161,7 +172,7 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|min:3',
             'surname' => 'nullable|min:3',
-            'personId' => 'required|regex:/^(3[1-9]|4[0-9]|5[1-6]|6[1-6])\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}[0-9X]$|unique:clients,personId',
+            'personId' => 'nullable|numeric',
             'accNumb' => 'nullable|min:22',
         ]);
 

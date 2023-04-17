@@ -24,8 +24,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'zuikis@example.com',
             'password' => Hash::make('123'),
     ]);
-        // $faker = Faker::create('lt_LT');
-        $faker = Faker::create('fr_FR'); 
+        $faker = Faker::create('lt_LT');
+        // $faker = Faker::create('fr_FR'); 
+
+        foreach(range(1, 5) as $_) {
+            DB::table('towns')->insert([
+                'name' => $faker->city,
+            ]);
+        }
 
         foreach(range(1, 50) as $_) {
             DB::table('clients')->insert([
@@ -33,8 +39,21 @@ class DatabaseSeeder extends Seeder
                 'surname' => $faker->lastName,
                 'accNumb' => 'LT 60 10100 ' . rand(00000000000, 99999999999),
                 'personId' => rand(3, 6) . rand(0, 9) . sprintf("%02d", rand(1, 12)) . sprintf("%02d", rand(1, 31)) . sprintf("%03d", rand(1, 999)) . rand(0, 9),
-                'balance' => '0'
+                'balance' => '0',
+                'town_id' => rand(1, 5),
             ]);
         }
+        
+        $p = ['Batai', 'Pica', 'Drugelis', 'Antis', 'Geltoni šortai', 'Stulpas, medinis, 5m',
+        'Guminukai', 'Bananai', 'Laidinė pelė', 'Ausinės', 'Kepurė', 'Padangos'];
+        
+        foreach(range(1, 100) as $_) {
+            DB::table('orders')->insert([
+                'title' => $p[rand(0, count($p) - 1)],
+                'price' => rand(10, 1000) / 100,
+                'client_id' => rand(1, 20),
+            ]);
+        }
+
     }
 }

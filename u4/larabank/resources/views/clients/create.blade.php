@@ -25,6 +25,18 @@
                             <div class="mb-3">
                                 <label class="form-label">*Bank Account Number will be generated automatically.</label>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Town</label>
+                                <select class="form-select" name="town_id">
+                                    <option value="0">Towns List</option>
+                                    @foreach ($towns as $town)
+                                        <option value="{{ $town->id }}"> 
+                                            {{ $town->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="form-text">Please select town</div>
+                            </div>
                             <button type="submit" class="create-btn">Submit</button>
                             @csrf
                         </form>

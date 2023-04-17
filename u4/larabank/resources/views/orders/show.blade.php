@@ -13,6 +13,7 @@
                     <div class="card-body-show">
                         <div><b>Name: </b>{{ $order->orderClient->name}}</div>
                         <div><b>Surname: </b>{{ $order->orderClient->surname}}</div>
+                        {{-- <div><b>City: </b>{{ $town->client->name}}</div> --}}
                     </div>
                </div>
             </div>
