@@ -22,9 +22,6 @@
                                 <label class="form-label">Personal ID number</label>
                                 <input type="text" class="form-control" name="persId"  >
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">*Bank Account Number will be generated automatically.</label>
-                            </div>
                             <button type="submit" class="create-btn">Submit</button>
                             @csrf
                         </form>

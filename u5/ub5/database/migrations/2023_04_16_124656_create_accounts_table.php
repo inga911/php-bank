@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('account', 50);
-            $table->float('balance', 8, 2)->default(0);
+            $table->string('account', 20);
+            $table->float('balance', 12, 2)->default(0);
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });

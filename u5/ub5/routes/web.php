@@ -38,9 +38,9 @@ Route::prefix('account')->name('account-')->group(function() {
     Route::post('/create', [AccountController::class, 'store'])->name('store');
     Route::get('/{client}', [AccountController::class, 'show'])->name('show');
     Route::get('/add/{client}', [AccountController::class, 'add'])->name('add');
-    Route::put('/add/{client}', [AccountController::class, 'updateAdd'])->name('updateAdd');
+    Route::put('/clients/{client}/accounts/{account}/updateAdd', [AccountController::class, 'updateAdd'])->name('updateAdd');
     Route::get('/deduct/{client}', [AccountController::class, 'deduct'])->name('deduct');
-    Route::put('/deduct/{client}', [AccountController::class, 'updateDeduct'])->name('updateDeduct');
+    Route::put('/clients/{client}/accounts/{account}/updateDeduct', [AccountController::class, 'updateDeduct'])->name('updateDeduct');    
     Route::get('/transfer/{client}', [AccountController::class, 'transfer'])->name('transfer');
     Route::put('/transfer/{client}', [AccountController::class, 'updateTransfer'])->name('updateTransfer');
 

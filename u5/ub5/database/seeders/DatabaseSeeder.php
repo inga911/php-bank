@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
         foreach(range(1, 100) as $_) {
             DB::table('accounts')->insert([
                 'account' => 'LT'.  rand(10,99) .  rand(10,99) . rand(100,999)  . rand(10000000000, 99999999999),
+                'balance' => rand(0.00, 99999.99),
                 'client_id' => rand(1, 50),
             ]);
         }

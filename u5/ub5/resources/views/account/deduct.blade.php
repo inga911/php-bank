@@ -10,12 +10,12 @@
                     <h4 class="title"><b>{{ $client->name}} {{ $client->surname}} </b></h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('account-add', $client)}}" method="post">
+                    <form action="{{route('account-show', $client)}}" method="post">
                         <div class="mb-3">
                             <label class="form-label">Enter an amount you want to deduct</label>
                             <input type="text" class="form-control" name="balance" >
-                            {{-- <input type="hidden" name="balace" value="{{ $client->balance }}">
-                            <span>Remaining funds: {{ $client->balance }} eur</span> --}}
+                            <input type="hidden" name="balance" value="{{ $client->balance }}">
+                            <span>Remaining funds: {{ number_format($client->balance, 2) }} eur</span>
                         </div>
                         <button type="submit" class="btn btn-add">Deduct funds</button>
                     @csrf

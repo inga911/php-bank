@@ -13,14 +13,28 @@
                     <div class="card-body-show">
                         <div>
                             @if ($accounts->count() > 0)
-                                <ul>
-                                    @foreach ($accounts as $account)
-                                        <li>{{ $account->account }} saskaitoje yra: {{ $account->balance }} EUR</li>
-                                       <a href="{{ route('account-add', $client) }}"> add funds</a>
-                                    @endforeach
-                                </ul>
+                            <ul>
+                                @foreach ($accounts as $account)
+                                    <li>{{ $account->account }} current balance: {{ $account->balance }} EUR</li>
+                                    <form action="{{ route('account-updateAdd', ['client' => $client->id, 'account' => $account->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <label for="amount">Add funds:</label>
+                                        <input type="text" name="amount" id="amount" required>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                                                    
+                                    <form action="{{ route('account-updateDeduct', ['client' => $client->id, 'account' => $account->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <label for="amount">Deduct funds:</label>
+                                        <input type="text" name="amount" id="amount" required>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                @endforeach
+                            </ul>
                             @else
-                                No bank account numbers associated with this client.
+                               This clients does not have bank accounts yet.
                             @endif
                         </div>                   
                     </div>

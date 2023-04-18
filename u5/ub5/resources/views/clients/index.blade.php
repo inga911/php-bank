@@ -45,7 +45,13 @@
                             <tr>
                                 <td>{{ $client->surname }}</td>
                                 <td>{{ $client->name }}</td>
-                                <td>Total balance: x eur</td>
+                                 @php
+                                    $total_balance = 0;
+                                    foreach ($client->accounts as $account) {
+                                        $total_balance += $account->balance;
+                                    }
+                                @endphp
+                                <td>Total balance: {{ number_format($total_balance, 2) }} eur</td>
                                 <td><a href="{{ route('account-show', $client) }}" class="">Show acc</a></td>
                                 <td><a href="{{ route('clients-show', $client) }}" class="">Show info</a></td>
                                 <td><a href="{{ route('clients-edit', $client) }}" class="">Edit</a></td>
