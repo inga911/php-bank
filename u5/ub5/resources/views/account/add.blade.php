@@ -14,10 +14,10 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label class="form-label">Account: {{ $account->account }}</label>
+                            <p>Account: {{ $account->account }}</p>
                             <label class="form-label">Enter an amount you want to add</label>
                             <input type="text" class="form-control" name="amount" value="{{ old('amount') }}" required>
-                            <span>Remaining funds: {{ number_format($client->balance, 2) }} eur</span>
+                            <span>Remaining funds: {{ $account->balance }} eur</span>
                         </div>
                         <button type="submit" class="btn btn-primary">Add funds</button>
                     </form>

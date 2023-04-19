@@ -63,23 +63,7 @@
 
                         </li>
                     </ul>
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Orders
-                            </a>
-
-                            <div class="bg-transp dropdown-menu dropdown-menu-black dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">
-                                    Order list
-                                </a>
-                                <a class="dropdown-item" href="">
-                                    New order
-                                </a>
-                            </div>
-
-                        </li>
-                    </ul>
+                  
                     <a class="nav-link dropdown-item" href="">
                         Home
                     </a>

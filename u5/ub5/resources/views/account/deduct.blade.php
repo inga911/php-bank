@@ -10,17 +10,18 @@
                     <h4 class="title"><b>{{ $client->name}} {{ $client->surname}} </b></h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('account-show', $client)}}" method="post">
+                    <form action="{{ route('account-updateDeduct', [$client, $account]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
                         <div class="mb-3">
+                            <p>Account: {{ $account->account }}</p>
                             <label class="form-label">Enter an amount you want to deduct</label>
-                            <input type="text" class="form-control" name="balance" >
-                            <input type="hidden" name="balance" value="{{ $client->balance }}">
-                            <span>Remaining funds: {{ number_format($client->balance, 2) }} eur</span>
+                            <input type="text" class="form-control" name="amount" value="{{ old('amount') }}" required>
+                            <span>Remaining funds: {{ $account->balance }} eur</span>
                         </div>
-                        <button type="submit" class="btn btn-add">Deduct funds</button>
-                    @csrf
-                    @method('put')
+                        <button type="submit" class="btn btn-primary">Deduct funds</button>
                     </form>
+                    
                 </div>
             </div>
         </div>
