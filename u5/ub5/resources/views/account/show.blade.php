@@ -26,7 +26,7 @@
                                         @method('PUT')
                                         <a href="{{ route('account-deduct', ['client' => $client->id, 'account' => $account->id]) }}">Deduct funds</a>
                                     </form>
-                                    <form action="{{ route('account-delete', ['client' => $client->id, 'account' => $account->id]) }}" method="post">                                         <input type="hidden" name="account_id" value="{{ $account->id }}">
+                                    <form action="{{ route('account-delete', ['client' => $client->id, 'account' => $account->id]) }}" method="post">
                                         <button type="submit" class="btn btn-del">Delete</button>
                                         @csrf
                                         @method('delete')

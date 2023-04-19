@@ -44,7 +44,7 @@ Route::prefix('account')->name('account-')->group(function() {
     Route::put('/clients/{client}/accounts/{account}/updateDeduct', [AccountController::class, 'updateDeduct'])->name('updateDeduct');    
     Route::get('/transfer/{client}', [AccountController::class, 'transfer'])->name('transfer');
     Route::put('/transfer/{client}', [AccountController::class, 'updateTransfer'])->name('updateTransfer');
-    Route::delete('/delete/{account}', [AccountController::class, 'destroy'])->name('delete');
+    Route::delete('/delete/{client}/accounts/{account}', [AccountController::class, 'destroy'])->name('delete');
 });
 
 Auth::routes();

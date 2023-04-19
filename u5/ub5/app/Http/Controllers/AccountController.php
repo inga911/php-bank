@@ -119,7 +119,7 @@ class AccountController extends Controller
     }
 
 
-    public function destroy(Request $request, Client $client, Account $account)
+    public function destroy(Client $client, Account $account, )
     {
         if ($account->balance > 0) {
             return redirect()
