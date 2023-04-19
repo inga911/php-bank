@@ -53,7 +53,7 @@ class AccountController extends Controller
             ->route('clients-index', [
                 'client' => $request->input('client_id')
             ])
-            ->with('success', 'Bank account number generated successfully!');
+            ->with('ok', 'Bank account number generated successfully!');
     }
 
 
@@ -84,7 +84,7 @@ class AccountController extends Controller
         $account->save();
 
         return redirect()->route('account-show', [$client, $account])
-            ->with('success', 'Funds added successfully.');
+            ->with('ok', 'Funds added successfully to ' . $client->name . ' ' . $client->surname . ' ' . $account->account);
     }
 
     public function deduct(Client $client, Account $account)
@@ -110,7 +110,7 @@ class AccountController extends Controller
         $account->save();
 
         return redirect()->route('account-show', [$client, $account])
-            ->with('success', 'Funds deducted successfully.');
+            ->with('ok', 'Funds deducted successfully from ' . $client->name . ' ' . $client->surname . ' ' . $account->account);
     }
     public function transfer(Client $client)
     {
@@ -120,8 +120,22 @@ class AccountController extends Controller
     }
 
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client, Account $account)
     {
-        //
+        if ($account->balance > 0) {
+            return redirect()
+                    ->route('account-show', $client)
+                    ->with('error', 'Cannot delete account with balance.');
+        }
+
+        $account->delete();
+
+        return redirect()
+                ->route('account-show', $client)
+                ->with('ok', 'Account deleted successfully');
     }
+
+        
+        
+        
 }

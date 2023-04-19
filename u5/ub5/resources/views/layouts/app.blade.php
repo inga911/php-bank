@@ -105,9 +105,9 @@
                 </div>
             </div>
         </nav>
-        {{-- @include('layouts.errors')
+        @include('layouts.errors')
         @include('layouts.messages')
-        @include('layouts.delete') --}}
+        @include('layouts.delete')
         <main>
             @yield('content')
         </main>

@@ -38,22 +38,18 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'surname' => 'required|min:3',
-            'personId' => 'nullable|numeric|min_digits:11|max_digits:11',
+            'personId' => 'numeric|min_digits:11|max_digits:11',
         ]);
 
-        if ($validator->fails()) {
-            $request->flash();
-            return redirect()
-                ->back()
-                ->withErrors($validator);
-        }
+        
         $client = new Client;
         $client->name = $request->name;
         $client->surname = $request->surname;
         $client->persId = $request->persId;
         $client->save();
         return redirect()
-            ->route('clients-index');
+            ->route('clients-index')
+            ->with('ok', 'New client was created');
     }
 
    
@@ -96,8 +92,18 @@ class ClientController extends Controller
             ->with('ok', 'The client was updated successfully');
     }
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
-        //
+
+        if (!$request->confirm && $client->accounts->count()) {
+            return redirect()
+                    ->back()
+                    ->with('error', 'If you want to delete this client from system, his accounts must be empty.');
+        }
+        $client->delete();
+
+        return redirect()
+            ->route('clients-index', $client)
+            ->with('ok', 'Client deleted successfully');
     }
 }

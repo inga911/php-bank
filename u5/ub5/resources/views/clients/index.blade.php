@@ -34,7 +34,8 @@
                             <tr>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Accounts</th>
+                                <th scope="col">Total balance</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
@@ -51,10 +52,17 @@
                                         $total_balance += $account->balance;
                                     }
                                 @endphp
-                                <td>Total balance: {{ number_format($total_balance, 2) }} eur</td>
+                                <td>{{ number_format($total_balance, 2) }} eur</td>
                                 <td><a href="{{ route('account-show', $client) }}" class="">Show acc</a></td>
                                 <td><a href="{{ route('clients-show', $client) }}" class="">Show info</a></td>
                                 <td><a href="{{ route('clients-edit', $client) }}" class="">Edit</a></td>
+                                <td>
+                                    <form action="{{ route('clients-delete', $client) }}" method="post">                                         <input type="hidden" name="account_id" value="{{ $account->id }}">
+                                        <button type="submit" class="btn btn-del">Delete</button>
+                                        @csrf
+                                        @method('delete')
+                                    </form>   
+                                </td>
                             </tr>
                             @empty
                                 <div class=" mt-4">

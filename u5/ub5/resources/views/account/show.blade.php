@@ -15,23 +15,21 @@
                             @if ($accounts->count() > 0)
                             <ul>
                                 @foreach ($accounts as $account)
-                                <li>{{ $account->account }} current balance: {{ $account->balance }} EUR</li>
-                                <form action="{{ route('account-updateAdd', ['client' => $client->id, 'account' => $account->id]) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <a href="{{ route('account-add', ['client' => $client->id, 'account' => $account->id]) }}">Add pinigu</a>
-                                        {{-- <label for="amount">ADD funds:</label>
-                                        <input type="text" name="amount" id="amount" required>
-                                        <button type="submit">Submit</button> --}}
-                                    </form>
-                                                                    
+                                    <li>{{ $account->account }} current balance: {{ $account->balance }} EUR</li>
+                                    <form action="{{ route('account-updateAdd', ['client' => $client->id, 'account' => $account->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <a href="{{ route('account-add', ['client' => $client->id, 'account' => $account->id]) }}">Add funds</a>
+                                    </form>                         
                                     <form action="{{ route('account-updateDeduct', ['client' => $client->id, 'account' => $account->id]) }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <a href="{{ route('account-deduct', ['client' => $client->id, 'account' => $account->id]) }}">Deduct pinigu</a>
-                                        {{-- <label for="amount">Deduct funds:</label>
-                                        <input type="text" name="amount" id="amount" required>
-                                        <button type="submit">Submit</button> --}}
+                                        <a href="{{ route('account-deduct', ['client' => $client->id, 'account' => $account->id]) }}">Deduct funds</a>
+                                    </form>
+                                    <form action="{{ route('account-delete', ['client' => $client->id, 'account' => $account->id]) }}" method="post">                                         <input type="hidden" name="account_id" value="{{ $account->id }}">
+                                        <button type="submit" class="btn btn-del">Delete</button>
+                                        @csrf
+                                        @method('delete')
                                     </form>
                                 @endforeach
                             </ul>

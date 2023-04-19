@@ -29,6 +29,7 @@ Route::prefix('clients')->name('clients-')->group(function() {
     Route::get('/{client}', [ClientController::class, 'show'])->name('show');
     Route::get('/edit/{client}', [ClientController::class, 'edit'])->name('edit');
     Route::put('/edit/{client}', [ClientController::class, 'update'])->name('update');
+    Route::delete('/delete/{client}', [ClientController::class, 'destroy'])->name('delete');
 
 });
 Route::prefix('account')->name('account-')->group(function() {
@@ -43,7 +44,7 @@ Route::prefix('account')->name('account-')->group(function() {
     Route::put('/clients/{client}/accounts/{account}/updateDeduct', [AccountController::class, 'updateDeduct'])->name('updateDeduct');    
     Route::get('/transfer/{client}', [AccountController::class, 'transfer'])->name('transfer');
     Route::put('/transfer/{client}', [AccountController::class, 'updateTransfer'])->name('updateTransfer');
-
+    Route::delete('/delete/{account}', [AccountController::class, 'destroy'])->name('delete');
 });
 
 Auth::routes();
