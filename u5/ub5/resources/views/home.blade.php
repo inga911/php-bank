@@ -18,10 +18,14 @@
 
                 </div>
                 <div class="analytic">
-                    {{-- <img src="{{  asset('images/analytics.svg')}}" alt="bank"> --}}
                     <div>
-                        {{-- <h3>At the moment, we have <span>{{ $totalClients }}</span> clients in the bank.</h3>
-                        <h4>The total amount of money in the bank is: <span>{{ $totalBalance }} </span> (eur).</h4> --}}
+                        <p>Total clients: {{$totalClients}} </p>
+                        <p>Total accounts: {{$totalAccounts}} </p>
+                        <p>Total amount in the bank: {{$totalAmount}} eur</p>
+                        <p>The richest client: {{$richestClient->name}} {{$richestClient->surname}} ({{$richestClient->accounts->sum('balance')}} eur)</p>
+                        <p> Average accounts amount: {{ number_format($averageAmount, 2)}} eur</p>
+                        <p> Number of accounts with 0 balances: {{$accountsZero}}</p>
+                        <p> Number of accounts with a negative balance: {{$accountsNegative}}</p>
                     </div>
                 </div>
         </div>

@@ -57,7 +57,8 @@
                                 <td><a href="{{ route('clients-show', $client) }}" class="">Show info</a></td>
                                 <td><a href="{{ route('clients-edit', $client) }}" class="">Edit</a></td>
                                 <td>
-                                    <form action="{{ route('clients-delete', $client) }}" method="post">                                         <input type="hidden" name="account_id" value="{{ $account->id }}">
+                                    <form action="{{ route('clients-delete', $client) }}" method="post">   
+                                        <input type="hidden" name="client_id" value="{{ $client->id }}">                                      <input type="hidden" name="account_id" value="{{ $account->id }}">
                                         <button type="submit" class="btn btn-del">Delete</button>
                                         @csrf
                                         @method('delete')

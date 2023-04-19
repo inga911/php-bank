@@ -64,7 +64,7 @@
                         </li>
                     </ul>
                   
-                    <a class="nav-link dropdown-item" href="">
+                    <a class="nav-link dropdown-item" href="{{route('home')}}">
                         Home
                     </a>
                     <!-- Right Side Of Navbar -->

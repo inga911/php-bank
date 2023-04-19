@@ -103,7 +103,6 @@ class AccountController extends Controller
             return redirect()
                     ->back()
                     ->with('error', 'Not enough money to deduct this amount.');
-
         }
 
         $account->balance -= $validatedData['amount'];

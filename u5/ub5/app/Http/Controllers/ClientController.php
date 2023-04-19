@@ -92,13 +92,15 @@ class ClientController extends Controller
             ->with('ok', 'The client was updated successfully');
     }
 
-    public function destroy(Request $request, Client $client)
+    public function destroy(Request $request,  $client_id)
     {
 
-        if (!$request->confirm && $client->accounts->count()) {
+        $client = Client::findOrFail($client_id);
+
+        if ($client->accounts()->sum('balance') > 0) {
             return redirect()
-                    ->back()
-                    ->with('error', 'If you want to delete this client from system, his accounts must be empty.');
+                    ->route('account-show', $client)
+                    ->with('error', 'Cannot delete client with active accounts.');
         }
         $client->delete();
 
