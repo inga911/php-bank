@@ -43,5 +43,6 @@
         </div>
     </div>
 </div>
+<a href="{{route('clients-index')}}">Go back to clients list</a>
 
 @endsection

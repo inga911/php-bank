@@ -43,7 +43,7 @@ Route::prefix('account')->name('account-')->group(function() {
     Route::get('/deduct/{client}/accounts/{account}/deduct', [AccountController::class, 'deduct'])->name('deduct');
     Route::put('/clients/{client}/accounts/{account}/updateDeduct', [AccountController::class, 'updateDeduct'])->name('updateDeduct');    
     Route::get('/transfer/{client}', [AccountController::class, 'transfer'])->name('transfer');
-    Route::put('/transfer/{client}', [AccountController::class, 'updateTransfer'])->name('updateTransfer');
+    Route::get('/transfer/{client}', [AccountController::class, 'updateTransfer'])->name('updateTransfer');
     Route::delete('/delete/{client}/accounts/{account}', [AccountController::class, 'destroy'])->name('delete');
 });
 

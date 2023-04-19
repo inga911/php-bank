@@ -113,13 +113,14 @@ class AccountController extends Controller
     }
     public function transfer(Client $client)
     {
-        // $clients = Client::all();
-        // $accounts = $client->accounts; 
-        // return view('account.transfer', compact('client', 'accounts', 'clients'));
+        $accounts = $client->accounts; 
+        $account = $accounts->first(); // or however you want to select the account
+        $clients = Client::all();
+        return view('account.transfer', compact('client', 'accounts', 'clients', 'account'));
     }
 
 
-    public function destroy(Client $client, Account $account, )
+    public function destroy(Client $client, Account $account)
     {
         if ($account->balance > 0) {
             return redirect()

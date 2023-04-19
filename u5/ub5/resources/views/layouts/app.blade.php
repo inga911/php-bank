@@ -43,21 +43,13 @@
                                 <a class="dropdown-item" href="{{route('clients-create')}}">
                                     New client
                                 </a>
-                                {{-- <a class="dropdown-item" href="{{ route('clients-edit') }}">
-                                    Client edit
-                                </a> --}}
                                 <a class="dropdown-item" href="{{route('account-create')}}">
                                     Generate new account number
                                 </a>
-                                {{-- <a class="dropdown-item" href="{{ route('account-add', $client) }}">
-                                    Add funds
-                                </a> --}}
-                                {{-- <a class="dropdown-item" href="{{ route('account-deduct', $client) }}">
-                                    Deduct funds
-                                </a> --}}
-                                {{-- <a class="dropdown-item" href="{{ route('account-transfer', $client) }}">
+                                <a class="dropdown-item" href="{{ route('account-transfer', ['client' => $client]) }}">
                                     Transfer money
-                                </a> --}}
+                                </a>
+                                
                                 
                             </div>
 

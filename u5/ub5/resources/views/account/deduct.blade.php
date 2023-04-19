@@ -21,7 +21,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Deduct funds</button>
                     </form>
-                    
+                    <a href="{{route('account-show', $client)}}">Go back to {{$client->name}} account list</a>
                 </div>
             </div>
         </div>

@@ -12,14 +12,14 @@
                     <div class="card-body-show">
                         <div><b>Name: </b>{{ $client->name }}</div>
                         <div><b>Surname: </b>{{ $client->surname }}</div>
-                        {{-- <div><b>Account number: </b>{{ $accountNumber }}</div> --}}
                         <div><b>Personal ID: </b>{{ $client->persId }}</div>
-                        {{-- <div><b>Balance: </b>{{ $client->balance }} eur</div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<a href="{{route('clients-index')}}">Go back to clients list</a>
+
 
 @endsection

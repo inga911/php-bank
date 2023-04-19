@@ -22,7 +22,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <button type="submit" class="create-btn">Generate</button> --}}
+
                         @csrf
                     </form>
                     <form action="{{route('account-store')}}" method="post">         
@@ -37,10 +37,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <button type="submit" class="create-btn">Generate</button> --}}
+
                         @csrf
                     </form>
-                    <form action="{{route('account-add', $client)}}" method="post">
+                    <form action="{{ route('account-add', ['client' => $client, 'account' => $account]) }}" method="post">
                         <div class="mb-3">
                             <label class="form-label">Amount</label>
                             <input type="text" class="form-control" name="balance" >
@@ -53,7 +53,7 @@
                         </div>
                         <button type="submit" class="btn btn-add">Confirm </button>
                     @csrf
-                    @method('put')
+                    @method('get')
                     </form>
                 </div>
             </div>
